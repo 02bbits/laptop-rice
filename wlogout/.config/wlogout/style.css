@@ -1,0 +1,66 @@
+* {
+    background-image: none;
+    box-shadow: none;
+	all: unset;
+	transition: 700ms cubic-bezier(0.15, 0.7, 0.1, 1);
+}
+
+window {
+	background: rgba(0, 0, 0, 0.8);
+    border: 5rem solid black;
+}
+
+button {
+	font: bold 22px "FiraCode Nerd Font";
+	background-color: rgba(2, 3, 5, 0.3);
+	color: #eeece3;
+	border-radius: 0rem;
+    text-decoration-color: #cdd6f4;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 45%;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    border: 1px solid transparent;
+}
+
+button:focus,
+button:active,
+button:hover {
+	background-color: rgba(17,16,17,0.9);
+	/* border-radius: 4rem; */
+    border: 1px solid white;
+    /* padding: 5.5rem; */
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+#lock {
+    background-image: url("/home/bdora/.config/wlogout/icons/lock.svg");
+    padding: 2rem;
+}
+
+#logout {
+    background-image: url("/home/bdora/.config/wlogout/icons/logout.svg");
+    padding: 2rem;
+}
+
+#suspend {
+    background-image: url("/home/bdora/.config/wlogout/icons/suspend.svg");
+    padding: 2rem;
+}
+
+#hibernate {
+    background-image: url("/home/bdora/.config/wlogout/icons/hibernate.svg");
+    padding: 2rem;
+}
+
+#shutdown {
+    background-image: url("/home/bdora/.config/wlogout/icons/shutdown.svg");
+    padding: 2rem;
+}
+
+#reboot {
+    background-image: url("/home/bdora/.config/wlogout/icons/reboot.svg");
+    padding: 2rem;
+}

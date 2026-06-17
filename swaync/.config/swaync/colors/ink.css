@@ -1,0 +1,11 @@
+@define-color noti-border-color #37303c;
+@define-color noti-bg #000000;
+@define-color noti-bg-hover-alt #4a4a4a;
+@define-color noti-bg-alt #4a4a4a;
+@define-color noti-fg #d6d6d6;
+@define-color noti-bg-hover #171617;
+@define-color noti-bg-focus #262626;
+@define-color noti-close-bg #171617;
+@define-color noti-close-bg-hover #37303c;
+@define-color noti-urgent #c2c2c2;
+@define-color bg-selected #262626;

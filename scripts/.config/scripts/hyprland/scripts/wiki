@@ -1,0 +1,20 @@
+#!/bin/bash
+
+CONFIG_FILE="$HOME/.config/rofi/command.rasi"
+WIKI_SOURCE=$(echo -e "Wikipedia\nArch Wiki\nGentoo Wiki" | rofi -i -dmenu -config $CONFIG_FILE)
+if [[ -n "$WIKI_SOURCE" ]]; then
+    QUERY=$(rofi -i -dmenu -config $CONFIG_FILE -no-case-sensitive)
+    if [[ -n "$QUERY" ]]; then
+        case "$WIKI_SOURCE" in
+        "Wikipedia")
+            xdg-open "https://en.wikipedia.org/wiki/Special:Search?search=$(echo $QUERY | sed 's/ /+/g')"
+            ;;
+        "Arch Wiki")
+            xdg-open "https://wiki.archlinux.org/index.php?search=$(echo $QUERY | sed 's/ /+/g')"
+            ;;
+        "Gentoo Wiki")
+            xdg-open "https://wiki.gentoo.org/index.php?search=$(echo $QUERY | sed 's/ /+/g')"
+            ;;
+        esac
+    fi
+fi

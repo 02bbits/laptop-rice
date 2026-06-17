@@ -1,0 +1,318 @@
+@import "ink.css";
+/* =======  Estilo global  ======= */
+* {
+    font: bold 13px "FiraCode Nerd Font";
+    border-radius: 10px;
+    /* background: transparent; */
+    box-shadow: none;
+    text-shadow: none;
+}
+
+window#waybar {
+    background: rgba(2,3,5,1);
+    border-radius: 8;
+    border: 2px solid #1f1d20;
+}
+
+/* =======  Tooltip  ======= */
+tooltip {
+    background: #000000;
+    border: 2px solid #171617;
+    border-radius: 10px;
+    color: #eeece3;
+    font: 12px "FiraCode Nerd Font";
+}
+tooltip label {
+    color: @foreground;
+}
+
+/* =======  Ventana activa  ======= */
+#window,
+#custom-username {
+    font-family: "Typedeer Mono";
+    margin: 1px 4px 1px 4px;
+    padding: 2px 0px 2px 10px;
+    background: transparent;
+    border-radius: 10px;
+    color: lighter(@main-color);
+}
+
+/* =======  Flechas decorativas  ======= */
+#custom-seperator-left {
+    margin: 10px 0px 10px 0px;
+    padding: 0px 5px 0px 5px;
+    color: transparent;
+    border-left: 1px solid rgba(45,38,50,1);
+}
+
+#custom-seperator-right {
+    margin: 10px 0px 10px -10px;
+    padding: 0px 5px 0px 5px;
+    color: transparent;
+    border-right: 1px solid rgba(45,38,50,1);
+}
+
+#custom-arrow-right,
+#custom-arrow-left {
+    color: #f0ebd8;
+    margin: 0;
+}
+
+/* =======  Grupos estándar (CPU, RAM, etc.)  ======= */
+#cpu,
+#memory,
+#disk,
+#custom-updates,
+#custom-playerlabel,
+#custom-cava,
+#custom-notifications,
+#custom-theme-switcher,
+#power-profiles-daemon,
+#control-center {
+    font: bold 12px "Typedeer Mono";
+    background: alpha(@tertiary_container, 0.0);
+    color: @on_tertiary_container;
+    border-radius: 10px;
+    padding: 0 6 0 6;
+    margin: 0 3 0 3;
+}
+
+
+#cpu,
+#memory,
+#disk,
+#custom-updates,
+#custom-playerlabel,
+#custom-cava,
+#custom-notifications,
+#custom-theme-switcher,
+#power-profiles-daemon,
+#control-center,
+#battery,
+#clock,
+#network,
+#pulseaudio,
+#custom-username {
+	transition: 1500ms cubic-bezier(0.05, 0.7, 0.1, 1);
+}
+
+#cpu:hover,
+#memory:hover,
+#disk:hover,
+#custom-updates:hover,
+#custom-playerlabel:hover,
+#custom-cava:hover,
+#custom-notifications:hover,
+#custom-theme-switcher:hover,
+#power-profiles-daemon:hover,
+#control-center:hover,
+#battery:hover,
+#clock:hover,
+#network:hover,
+#pulseaudio:hover,
+#custom-username:hover {
+	transition: 1500ms cubic-bezier(0.05, 0.7, 0.1, 1);
+    color: #888888;
+}
+
+#tray {
+    background: transparent;
+}
+
+#tray menu {
+    background: rgba(2,3,5,1);
+    border-radius: 10;
+    border: 1px solid #1f1d20;
+}
+
+#power-profiles-daemon {
+    padding: 0 11 0 10;
+}
+
+#cpu {
+    color: #cbc9c2;
+}
+
+#memory {
+    color: #73726e;
+}
+
+#disk {
+    color: #454442;
+}
+
+
+#custom-playerlabel {
+    background: #a6e3a1;
+}
+
+#custom-cava {
+    background: #a6e3a1;
+}
+
+#custom-notifications {
+    color: white;
+    margin: 0 15 0 5;
+    padding: 0;
+    font-family: "Typedeer Mono";
+    color: lighter(@main-color);
+}
+
+#custom-theme-switcher {
+    background: #a6e3a1;
+}
+
+#power-profiles-daemon {
+    background: transparent;
+    color: #cbc9c2;
+    margin: 0 5 0 5;
+    padding: 0 5 0 0;
+}
+
+#control-center {
+    background: #a6e3a1;
+}
+
+#custom-section,
+#custom-stop,
+#custom-record {
+    margin: 6px 0px; /* 6 vertical, 4 horizontal  */
+    padding: 0px 8px;
+    background: alpha(@tertiary_container, 0.8);
+    color: @on_tertiary_container;
+    border-radius: 10px;
+}
+
+/* combinaciones de radios especiales */
+#custom-section {
+    border-radius: 0 0 0 0;
+}
+#custom-stop {
+    border-radius: 0 10px 10px 0;
+}
+#custom-record {
+    border-radius: 10px 0 0 10px;
+}
+
+/* =======  Workspaces  ======= */
+#workspaces {
+    margin: 2px 0px 2px 0px;
+    background: transparent;
+    color: #cbc9c2;
+    padding: 0 5 0 5;
+}
+
+#workspaces button {
+    /* background: white; */
+    font-size: 20px;
+    margin: 0 -7 0 -7;
+    padding: 0;
+    color: alpha(@on_secondary_container, 0.55);
+    border-radius: 10px;
+}
+
+#workspaces button.empty {
+    margin: 0 -7 0 -7;
+    color: alpha(@on_secondary_container, 0.15);
+}
+
+#workspaces button.active {
+    color: alpha(@primary, 1);
+    margin: 13 -3 0 -3;
+}
+
+#workspaces button:hover,
+#workspaces button.urgent {
+    color: alpha(@primary, 1);
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+/* =======  Audio  ======= */
+#pulseaudio,
+#network,
+#bluetooth {
+    font: bold 12px "Typedeer Mono";
+    margin: 0 5 0 5;
+    padding: 0 4px;
+    background: alpha(@surface_container_highest, 0);
+    border-radius: 10px;
+}
+
+#pulseaudio {
+    color: #73726e;
+}
+
+#network {
+    color: #454442;
+}
+
+#microphone {
+    color: #179299;
+}
+
+/* slider de volumen */
+#pulseaudio-slider {
+    margin: 10px;
+}
+#pulseaudio-slider slider,
+#pulseaudio-slider highlight {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 8px;
+}
+
+/* =======  Reloj  ======= */
+#clock {
+    font-family: "Typedeer Mono";
+    font-weight: 600;
+    font-size: 14px;
+    margin: -15 18 -18 0;
+    color: lighter(@main-color);
+}
+
+/* =======  Poder & batería  ======= */
+#power {
+    margin: 0px 4px 2px 4px;
+    background: transparent;
+    color: @on_surface;
+    border-radius: 10px;
+}
+
+#battery {
+    font: bold 12px "Typedeer Mono";
+    margin: 0 10 0 -8;
+    color: @on_surface;
+}
+
+/* =======  Taskbar  ======= */
+#taskbar {
+    margin: 0 4px;
+    padding: 0 8px;
+    border-radius: 10px;
+    background: transparent;
+    color: @on_tertiary_container;
+}
+
+#taskbar button:hover {
+    background: alpha(@tertiary_container, 0.8);
+}
+#taskbar button.active {
+    background: transparent;
+}
+
+/* =======  Módulos singulares  ======= */
+#custom-weather {
+    padding: 0 4px;
+} /* sin fondo para icono/temperatura */
+
+/* Ajuste puntual para evitar separación excesiva */
+#bluetooth {
+    margin-left: 7px;
+} /* mantiene la distancia original */
+
+/* GROUP */
+#control-center {
+    background: transparent;
+}

@@ -1,0 +1,77 @@
+@theme "hybrid.rasi"
+
+configuration {
+    modi: "drun,run,window";
+    show-icons: true;
+    icon-theme: "Papirus-Dark";
+    display-drun: "  ";
+    drun-display-format: "{icon} {name}";
+    location: 0;
+    font: "Monospace 11";
+}
+
+window {
+    width: 400px;
+    background-color: @background;
+    border-radius: 11px;
+    y-offset: -350px;
+}
+
+mainbox {
+    children: [inputbar, listview];
+    padding: 20px;
+    spacing: 10px;
+}
+
+inputbar {
+    spacing: 10px;
+    padding: 8px 16px;
+    children: [textbox-prompt-colon, entry];
+    background-color: @background-alt;
+    border-radius: 8px;
+}
+
+textbox-prompt-colon {
+    expand: false;
+    str: "";
+    padding: 0 8px 0 0;
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
+    text-color: @foreground;
+}
+
+entry {
+    placeholder: "Search...";
+    placeholder-color: @foreground;
+    text-color: @foreground;
+    padding: 4px 0;
+}
+
+listview {
+    lines: 6;
+    columns: 1;
+    fixed-height: false;
+    spacing: 5px;
+    background-color: transparent;
+}
+
+element {
+    padding: 8px;
+    spacing: 12px;
+    border-radius: 8px;
+}
+
+element-icon {
+    size: 50px;
+    cursor: pointer;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @foreground;
+}
+
+element selected.normal {
+    background-color: @selected;
+    text-color: @background;
+}

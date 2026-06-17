@@ -1,0 +1,79 @@
+@theme "hybrid.rasi"
+
+configuration {
+    sort: true;
+    modi: "drun,run,window";
+    show-icons: true;
+    icon-theme: "Papirus-Dark";
+    display-drun: "  ";
+    drun-display-format: "{icon} {name}";
+    location: 0;
+    font: "FiraCode Nerd Font 15";
+    terminal: "/usr/bin/ghostty";
+    // matching: "fuzzy";
+    // sort-method: "fzf";
+}
+
+window {
+    width: 350px;
+    height: 350px;
+    background-color: @background;
+    border-radius: 11px;
+    border-color: #1f1d20;
+    border: 2px;
+}
+
+/*****----- Elements -----*****/
+element {
+    enabled:                     true;
+    spacing:                     10px;
+    padding-left:               10px;
+    border:                      0px solid;
+    border-radius:               8px;
+    border-color:                @border-color;
+    background-color:            transparent;
+    text-color:                  @foreground-color;
+    cursor:                      pointer;
+}
+
+element-icon {
+    text-color:                  inherit;
+    cursor:                      inherit;
+    size: 2ch;
+    // size: 2.95;
+}
+element-text {
+    text-color:                  inherit;
+    highlight:                   inherit;
+    cursor:                      inherit;
+}
+
+button.selected {
+    background-color: @selected-normal-background;
+}
+
+element.normal.active {
+    text-color:       @active-foreground;
+}
+element.selected.normal {
+    text-color:       #B22222;
+}
+
+inputbar {
+    spacing: 10px;
+    padding: 16px 16px;
+    border-radius: 8px;
+    background: #000000;
+}
+
+entry {
+    placeholder: "";
+    background: #000000;
+    text-color: @foreground;
+    padding: 4 0 0 9;
+}
+
+listview {
+    spacing:      2px ;
+    padding:      0px 20px 10px 20px;
+}

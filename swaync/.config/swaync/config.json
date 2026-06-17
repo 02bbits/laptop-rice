@@ -1,0 +1,89 @@
+{
+  "$schema": "/etc/xdg/swaync/configSchema.json",
+  "positionX": "right",
+  "positionY": "top",
+  "layer": "overlay",
+  "control-center-layer": "top",
+  "layer-shell": true,
+  "cssPriority": "application",
+  "control-center-width": 420,
+  "control-center-height": 720,
+  "control-center-margin-top": 0,
+  "control-center-margin-bottom": 500,
+    "cssPriority" : "user",
+  "control-center-margin-right": 500,
+  "control-center-margin-left": 0,
+  "notification-2fa-action": true,
+  "notification-inline-replies": false,
+  "notification-window-width": 380,
+  "notification-icon-size": 48,
+  "notification-body-image-height": 240,
+  "notification-body-image-width": 240,
+  "timeout": 8,
+  "timeout-low": 4,
+  "timeout-critical": 0,
+  "fit-to-screen": true,
+  "keyboard-shortcuts": true,
+  "image-visibility": "when-available",
+  "transition-time": 150,
+  "hide-on-clear": true,
+  "hide-on-action": true,
+  "script-fail-notify": true,
+    "widgets": [
+        "buttons-grid",
+        "mpris",
+        "dnd",
+        "title",
+        "notifications"
+    ],
+    "widget-config": {
+        "title": {
+            "text": "Notifications",
+            "clear-all-button": true,
+            "button-text": ""
+        },
+        "notifications": {
+            "vexpand": false
+        },
+        "inhibitors": {
+            "text": "Inhibitors",
+            "button-text": "Clear All",
+            "clear-all-button": true
+        },
+        "dnd": {
+            "text": "Do Not Disturb"
+        },
+        "label": {
+            "max-lines": 1,
+            "text": "Control Center"
+        },
+        "mpris": {
+            "image-size": 96,
+            "image-radius": 12
+        },
+        "buttons-grid": {
+            "actions": [
+                {
+                    "label": " ",
+                    "command": "nm-connection-editor"
+                },
+                {
+                    "label": "",
+                    "command": "blueman-manager"
+                },
+                {
+                    "label": "",
+                    "command": "$HOME/.config/scripts/waybar/toggle_mic.sh"
+                },
+                {
+                    "label": "󰈐",
+                    "command": "asusctl profile next && notify-send -n /usr/share/icons/hicolor/512x512/apps/rog-control-center.png \"$(asusctl profile get|head -n 1)\" -a \"ROG Control Center\" -t 1000"
+                },
+                {
+                    "label": "󰏘",
+                    "command": "nwg-look"
+                }
+            ]
+        }
+    }
+}

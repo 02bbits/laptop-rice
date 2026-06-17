@@ -1,0 +1,46 @@
+# Config syntax crash course
+# ==========================
+# theme = "iTerm2 Pastel Dark Background"
+theme = "ink"
+## Bindings
+
+# Tab
+keybind = ctrl+shift+t=new_tab
+keybind = ctrl+w=close_tab
+keybind = ctrl+shift+n=new_split:right
+
+keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+j=goto_split:down
+keybind = ctrl+shift+k=goto_split:up
+keybind = ctrl+shift+l=goto_split:right
+
+keybind = ctrl+shift+f=toggle_split_zoom
+
+# Appearance
+background-opacity = 0.97
+font-family = "FiraCode Nerd Font"
+
+# Cursor
+cursor-style = bar 
+cursor-style-blink = false
+
+# Tab
+gtk-tabs-location = bottom
+gtk-titlebar-hide-when-maximized = false
+# adjust-cell-width = -15%
+adjust-cell-height = 10%
+window-decoration = false
+
+# Window Padding
+window-padding-x = 11
+window-padding-y = 14
+
+confirm-close-surface = true
+shell-integration = zsh
+
+gtk-single-instance = true
+
+resize-overlay = never
+
+# Shader
+custom-shader = shaders/cursor_smear.glsl

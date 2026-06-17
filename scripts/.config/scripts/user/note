@@ -1,0 +1,31 @@
+#!/bin/bash
+
+NOTE_DIR="$HOME/Notes"
+mode=""
+
+if [ $# -eq 0 ]; then
+    echo "No message provided"
+    exit 1
+fi
+
+while getopts "le" opt; do
+    case "$opt" in
+    e)
+        option=$(find "$NOTE_DIR" -maxdepth 1 -type f -printf '%f\n' | fzf)
+        [ -n "$option" ] && nvim "$NOTE_DIR/$option"
+        exit 0
+        ;;
+    l)
+        option=$(find "$NOTE_DIR" -maxdepth 1 -type f -printf '%f\n' | fzf)
+        [ -n "$option" ] && cat "$NOTE_DIR/$option"
+        exit 0
+        ;;
+    *)
+        exit 1
+        ;;
+    esac
+done
+
+shift $((OPTIND - 1))
+
+echo "$*" >>"$NOTE_DIR/$(date +'%Y-%m-%d')"

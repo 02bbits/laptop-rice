@@ -1,0 +1,96 @@
+* {
+    /* Tokyo Night colors */
+    background:                 rgba(5,5,5,1);
+    foreground:                 #f0ebd8;
+    color0:                     #1a1b26;  /* Black */
+    color1:                     #f7768e;  /* Red */
+    color2:                     #9ece6a;  /* Green */
+    color3:                     #e0af68;  /* Yellow */
+    color4:                     #7aa2f7;  /* Blue */
+    color5:                     #bb9af7;  /* Magenta */
+    color6:                     #7dcfff;  /* Cyan */
+    color7:                     #a9b1d6;  /* White */
+    color8:                     #414868;  /* Bright Black */
+    color9:                     #f7768e;  /* Bright Red */
+    color10:                    #9ece6a;  /* Bright Green */
+    color11:                    #e0af68;  /* Bright Yellow */
+    color12:                    #7aa2f7;  /* Bright Blue */
+    color13:                    #bb9af7;  /* Bright Magenta */
+    color14:                    #7dcfff;  /* Bright Cyan */
+    color15:                    #c0caf5;  /* Bright White */
+    
+    background-alt:             #24283b;
+    selected:                   #80c8ff;
+    active:                     #7aa2f7;
+    urgent:                     #f7768e;
+    
+    border-color:                @color13;
+    handle-color:                @selected;
+    background-color:            @background;
+    foreground-color:            @foreground;
+    alternate-background:        @background-alt;
+    normal-background:           @background;
+    normal-foreground:           @foreground;
+    urgent-background:           @urgent;
+    urgent-foreground:           @background;
+    active-background:           @active;
+    active-foreground:           @background;
+    selected-normal-background:  @selected;
+    selected-normal-foreground:  @background;
+    selected-urgent-background:  @active;
+    selected-urgent-foreground:  @background;
+    selected-active-background:  @urgent;
+    selected-active-foreground:  @color12;
+    alternate-normal-background: @background;
+    alternate-normal-foreground: @foreground;
+    alternate-urgent-background: @urgent;
+    alternate-urgent-foreground: @background;
+    alternate-active-background: @active;
+    alternate-active-foreground: @background;
+}
+
+
+prompt {
+    enabled:                     true;
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+textbox-prompt-colon {
+    enabled:                     true;
+    padding:                     5px 0px;
+    expand:                      false;
+    str:                         " 🔎";
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+entry {
+    enabled:                     true;
+    padding:                     5px 0px;
+    cursor:                      text;
+    placeholder-color:           inherit;
+}
+num-filtered-rows {
+    enabled:                     true;
+    expand:                      false;
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+textbox-num-sep {
+    enabled:                     true;
+    expand:                      false;
+    str:                         "/";
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+num-rows {
+    enabled:                     true;
+    expand:                      false;
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+case-indicator {
+    enabled:                     true;
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+

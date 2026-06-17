@@ -1,0 +1,36 @@
+{
+    "label" : "lock",
+    "action" : "sleep 0.1 && $HOME/.config/scripts/hyprland/lock_screen.sh",
+    "text" : "  lock  ",
+    "keybind" : "l"
+}
+{
+    "label" : "hibernate",
+    "action" : "systemctl hibernate || loginctl hibernate",
+    "text" : "hibernate",
+    "keybind" : "h"
+}
+{
+    "label" : "logout",
+    "action" : "hyprctl clients -j | jq -r '.[].pid' | xargs kill; pkill Hyprland || pkill niri || loginctl terminate-user $USER",
+    "text" : "  logout ",
+    "keybind" : "e"
+}
+{
+    "label" : "shutdown",
+    "action" : "hyprctl clients -j | jq -r '.[].pid' | xargs kill; systemctl poweroff || loginctl poweroff",
+    "text" : "poweroff",
+    "keybind" : "s"
+}
+{
+    "label" : "suspend",
+    "action" : "sleep 0.1 && $HOME/.config/scripts/hyprland/lock_screen.sh & systemctl suspend || loginctl suspend",
+    "text" : " sleep  ",
+    "keybind" : "u"
+}
+{
+    "label" : "reboot",
+    "action" : "hyprctl clients -j | jq -r '.[].pid' | xargs kill; systemctl reboot || loginctl reboot",
+    "text" : " reboot ",
+    "keybind" : "r"
+}

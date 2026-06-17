@@ -1,0 +1,22 @@
+#!/bin/bash
+
+CONFIG_FILE="$HOME/.config/rofi/command.rasi"
+MODE=$(echo -e "Spectrum Cycle\nStatic\nBreathing" | rofi -i -dmenu -config $CONFIG_FILE)
+if [[ -n "$MODE" ]]; then
+    case "$MODE" in
+    "Spectrum Cycle")
+        BRIGHTNESS=$(echo -e "50\n80\n100" | rofi -dmenu -config $CONFIG_FILE)
+        case "$BRIGHTNESS" in
+        "50")
+            openrgb -m 'Spectrum Cycle' -b 50 -s 0
+            ;;
+        "80")
+            openrgb -m 'Spectrum Cycle' -b 80 -s 0
+            ;;
+        "100")
+            openrgb -m 'Spectrum Cycle' -b 100 -s 0
+            ;;
+        esac
+        ;;
+    esac
+fi

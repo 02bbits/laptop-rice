@@ -1,0 +1,7 @@
+#!/bin/bash
+
+CONFIG_FILE="$HOME/.config/rofi/command.rasi"
+shader=$(ls $HOME/.config/hypr/shaders/ --ignore=Current | rofi -i -dmenu -config $CONFIG_FILE)
+rm ~/.config/hypr/shaders/Current
+cp ~/.config/hypr/shaders/"$shader" ~/.config/hypr/shaders/Current
+hyprctl reload

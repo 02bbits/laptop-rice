@@ -1,0 +1,16 @@
+#version 300 es
+
+precision highp float;
+in vec2 v_texcoord;
+uniform sampler2D tex;
+out vec4 fragColor;
+
+void main() {
+    vec4 pix = texture(tex, v_texcoord);
+
+    // grayscale
+    float lum = dot(pix.rgb, vec3(0.2126, 0.7152, 0.0722));
+    vec3 color = vec3(lum);
+
+    fragColor = vec4(color, pix.a);
+}

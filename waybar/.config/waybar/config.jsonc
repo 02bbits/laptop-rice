@@ -1,0 +1,31 @@
+{
+    "include": "~/.config/waybar/modules.jsonc",
+    "width": 1220,
+    // "width": 45,
+    "margin-top": 8,
+    // "position": "left",
+    "height": 45,
+    // "height": 700,
+    "spacing": 10,
+    "margin-bottom": 7,
+    "reload_style_on_change": true,
+    "modules-left": [
+        "custom/username",
+        "group/system-info"
+    ],
+    "modules-center": [
+        // "group/info",
+        "seperator-left",
+        "niri/workspaces",
+        "seperator",
+        "group/utils"
+    ],
+    "modules-right": [
+        // "custom/brightness",
+        //"group/control-center",
+        "group/system",
+        "battery",
+        "custom/notifications",
+        "clock",
+    ]
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-alt-n": ["task::Spawn", { "task_name": "run file" }],
+      "alt-p": "editor::AcceptEditPrediction",
+      "ctrl-shift-n": "workspace::NewTerminal"
+    }
+  }
+]

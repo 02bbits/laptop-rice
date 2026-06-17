@@ -1,0 +1,26 @@
+# Ink
+# A monochrome dark theme with wine red accent
+# ─────────────────────────────────────────────
+
+[Backgrounds]
+base       = #0e0e0e   # terminal / app background
+mantle     = #131313   # slightly raised surface
+crust      = #1b1b1b   # cards, sidebars
+overlay0   = #1f1f1f   # containers
+overlay1   = #2a2a2a   # elevated containers
+overlay2   = #353535   # highest surface
+
+[Borders]
+muted      = #474747   # strong border, separators
+subtle     = #353535   # default border
+faint      = #2a2a2a   # subtle border
+
+[Text]
+text       = #f0ebd8   # primary text
+subtext1   = #e2e2e2   # secondary text
+subtext2   = #c6c6c6   # tertiary text
+overlay    = #ababab   # muted text
+dim        = #919191   # dimmed / hints
+
+[Accent]
+red        = #b01949
