@@ -1,0 +1,26 @@
+#!/bin/bash
+
+TLDR_DIR="$HOME/.cache/tldr/pages/common/"
+ls $TLDR_DIR | fzf --style=full \
+    --layout=reverse \
+    --border-label-pos=3 \
+    \
+    --margin=1,2 \
+    --list-border=rounded \
+    --list-label=" pages " \
+    --list-label-pos=2 \
+    --input-border=rounded \
+    --input-label=" search " \
+    --input-label-pos=2 \
+    --preview-border=rounded \
+    --preview-label=" preview " \
+    --preview-label-pos=2 \
+    --preview-window=right:60%:border-left \
+    --prompt=" 󰍉 " \
+    --pointer="❯" \
+    --marker="✓" \
+    --separator="─" \
+    --scrollbar="▐" \
+    --height=60% \
+    --info=inline-right \
+    --preview='TLDR_DIR="$HOME/.cache/tldr/pages/common/"; bat $(echo --color=always -l md $TLDR_DIR/{});' | xargs -I {} bat $TLDR_DIR/{}

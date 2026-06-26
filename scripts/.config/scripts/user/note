@@ -1,26 +1,83 @@
 #!/bin/bash
 
-NOTE_DIR="$HOME/Notes"
-mode=""
+NOTE_DIR="$HOME/Documents/bb02Vault/personal/daily"
+
+show_help() {
+    cat <<EOF
+Usage: $(basename "$0") [OPTION] [TEXT...]
+
+Without arguments:
+Show the most recently created note.
+
+Options:
+    -e    Select and edit a note with nvim
+    -l    Select and view a note with bat
+    -v    Browse notes with fzf preview
+    -h    Show this help message
+
+Examples:
+$(basename "$0")
+$(basename "$0") -e
+$(basename "$0") Fixed scraper bug
+
+Note sections:
+Use these sections inside the note to capture the important parts 
+    [D]      Things you have done
+    [L]      Things you have learnt 
+    [I]      Ideas you had 
+    [N]      The next tasks you are going to do
+EOF
+}
 
 if [ $# -eq 0 ]; then
-    echo "No message provided"
-    exit 1
+    bat -l md "$(eza --absolute -s created "$NOTE_DIR" -r | head -n 1)" --theme base16
+    exit 0
 fi
 
-while getopts "le" opt; do
+while getopts "levh" opt; do
     case "$opt" in
     e)
-        option=$(find "$NOTE_DIR" -maxdepth 1 -type f -printf '%f\n' | fzf)
+        option=$(find "$NOTE_DIR" -maxdepth 1 -type f -printf '%f\n' | sort -r | fzf)
         [ -n "$option" ] && nvim "$NOTE_DIR/$option"
         exit 0
         ;;
     l)
-        option=$(find "$NOTE_DIR" -maxdepth 1 -type f -printf '%f\n' | fzf)
-        [ -n "$option" ] && cat "$NOTE_DIR/$option"
+        option=$(find "$NOTE_DIR" -maxdepth 1 -type f -printf '%f\n' | sort -r | fzf)
+        [ -n "$option" ] && bat -l md "$NOTE_DIR/$option" --color=always --theme base16
+        exit 0
+        ;;
+    v)
+        option=$(find "$NOTE_DIR" -maxdepth 1 -type f -printf '%f\n' | sort -r | fzf --style=full \
+            --layout=reverse \
+            --border-label-pos=3 \
+            --margin=1,2 \
+            --list-border=rounded \
+            --list-label=" notes " \
+            --list-label-pos=2 \
+            --input-border=rounded \
+            --input-label=" search " \
+            --input-label-pos=2 \
+            --preview-border=rounded \
+            --preview-label=" preview " \
+            --preview-label-pos=2 \
+            --preview-window=right:60%:border-left \
+            --prompt=" 󰍉 " \
+            --pointer="❯" \
+            --marker="✓" \
+            --separator="─" \
+            --scrollbar="▐" \
+            --height=60% \
+            --info=inline-right \
+            --preview='NOTE_DIR="$HOME/Notes/"; bat --color=always $(echo $NOTE_DIR/{});')
+        [ -n "$option" ] && bat -l md "$NOTE_DIR/$option" -f --theme base16
+        exit 0
+        ;;
+    h)
+        show_help
         exit 0
         ;;
     *)
+        show_help >&2
         exit 1
         ;;
     esac
@@ -28,4 +85,27 @@ done
 
 shift $((OPTIND - 1))
 
-echo "$*" >>"$NOTE_DIR/$(date +'%Y-%m-%d')"
+note_file="$NOTE_DIR/$(date +'%Y-%m-%d').md"
+
+if [ ! -f "$note_file" ]; then
+    mkdir -p "$NOTE_DIR"
+    cat <<EOF >"$note_file"
+---
+tags:
+  - daily
+---
+
+EOF
+fi
+
+read -rp "Category [d/i/n/l]: " category
+
+case "$category" in
+d) emoji="✅" ;;
+i) emoji="💡" ;;
+n) emoji="📝" ;;
+l) emoji="📚" ;;
+*) emoji="" ;;
+esac
+
+printf '# %s\n%s %s\n\n' "$(date +'%T')" "$emoji" "$*" >>"$note_file"
