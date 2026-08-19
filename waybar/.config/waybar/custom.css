@@ -1,8 +1,7 @@
 @import "ink.css";
-
-/* =======  Global  ======= */
+/* =======  Estilo global  ======= */
 * {
-    font: bold 12px "FiraCode Nerd Font";
+    font: bold 13px "FiraCode Nerd Font";
     border-radius: 10px;
     /* background: transparent; */
     box-shadow: none;
@@ -10,50 +9,21 @@
 }
 
 window#waybar {
-    background: rgba(2,3,5,0.99);
-    border-radius: 12;
-    border: 2px solid #2a2a2a;
-}
-
-/* =======  Workspaces  ======= */
-#workspaces {
-    margin: 2px 0px 2px 0px;
     background: transparent;
-    color: #cbc9c2;
-    padding: 0 5 0 5;
 }
 
-#workspaces button {
-    /* background: white; */
-    margin: 0 -7 0 -7;
-    padding: 0;
-    color: alpha(@on_secondary_container, 0.55);
-    border-radius: 10px;
-}
-
-#workspaces button.empty {
-    margin: 0 -7 0 -7;
-    color: alpha(@on_secondary_container, 0.15);
-}
-
-#workspaces button.active {
-    color: alpha(@primary, 1);
-    margin: 13 -3 0 -3;
-}
-
-#workspaces button:hover,
-#workspaces button.urgent {
-    /* color: alpha(@primary, 1); */ 
-    color: #AD0034;
-    margin-left: 0px;
-    margin-right: 0px;
+#bar {
+    padding: 0 200 0 200;
+    background: rgba(2,3,5,1);
+    border-radius: 10;
+    border: 2px solid #1f1d20;
 }
 
 /* =======  Tooltip  ======= */
 tooltip {
     background: #000000;
     border: 2px solid #171617;
-    border-radius: 12px;
+    border-radius: 10px;
     color: #eeece3;
     font: 12px "FiraCode Nerd Font";
 }
@@ -64,8 +34,7 @@ tooltip label {
 /* =======  Ventana activa  ======= */
 #window,
 #custom-username {
-    font: 13px "Typedeer Mono";
-    font-weight: bold;
+    font-family: "Typedeer Mono";
     margin: 1px 4px 1px 4px;
     padding: 2px 0px 2px 10px;
     background: transparent;
@@ -73,21 +42,32 @@ tooltip label {
     color: lighter(@main-color);
 }
 
-/* =======  Flechas decorativas  ======= */
+/* =======  Flechas decorativas  ======= */ 
+
+#custom-dec-left {
+    margin: 10px 0px 10px 15px;
+    padding: 0px 0px 0px 15px;
+    color: transparent;
+}
+
+#custom-dec-right {
+    margin: 10px 15px 10px 0px;
+    padding: 0px 15px 0px 0px;
+    color: transparent;
+}
+
 #custom-seperator-left {
-    margin: 11px 0px 11px 0px;
+    margin: 10px 0px 10px 0px;
     padding: 0px 5px 0px 5px;
     color: transparent;
-    border-left: 3px solid #1b1b1b;
-    border-radius: 0px;
+    border-left: 1px solid rgba(45,38,50,1);
 }
 
 #custom-seperator-right {
-    margin: 11px 0px 11px -10px;
+    margin: 10px 0px 10px -10px;
     padding: 0px 5px 0px 5px;
     color: transparent;
-    border-right: 3px solid #1b1b1b;
-    border-radius: 0px;
+    border-right: 1px solid rgba(45,38,50,1);
 }
 
 #custom-arrow-right,
@@ -101,15 +81,13 @@ tooltip label {
 #memory,
 #disk,
 #custom-updates,
-#pulseaudio,
-#network,
 #custom-playerlabel,
 #custom-cava,
 #custom-notifications,
 #custom-theme-switcher,
 #power-profiles-daemon,
 #control-center {
-    font: bold 14px "Typedeer Mono";
+    font: bold 12px "Typedeer Mono";
     background: alpha(@tertiary_container, 0.0);
     color: @on_tertiary_container;
     border-radius: 10px;
@@ -195,7 +173,7 @@ tooltip label {
     color: white;
     margin: 0 15 0 5;
     padding: 0;
-    font: bold 14px "Typedeer Mono";
+    font-family: "Typedeer Mono";
     color: lighter(@main-color);
 }
 
@@ -235,11 +213,46 @@ tooltip label {
     border-radius: 10px 0 0 10px;
 }
 
+/* =======  Workspaces  ======= */
+#workspaces {
+    margin: 2px 0px 2px 0px;
+    background: transparent;
+    color: #cbc9c2;
+    padding: 0 5 0 5;
+}
+
+#workspaces button {
+    /* background: white; */
+    font-size: 20px;
+    margin: 0 -7 0 -7;
+    padding: 0;
+    color: alpha(@on_secondary_container, 0.55);
+    border-radius: 10px;
+}
+
+#workspaces button.empty {
+    margin: 0 -7 0 -7;
+    color: alpha(@on_secondary_container, 0.15);
+}
+
+#workspaces button.active {
+    color: alpha(@primary, 1);
+    margin: 13 -3 0 -3;
+}
+
+#workspaces button:hover,
+#workspaces button.urgent {
+    /* color: alpha(@primary, 1); */ 
+    color: #AD0034;
+    margin-left: 0px;
+    margin-right: 0px;
+}
 
 /* =======  Audio  ======= */
 #pulseaudio,
 #network,
 #bluetooth {
+    font: bold 12px "Typedeer Mono";
     margin: 0 5 0 5;
     padding: 0 4px;
     background: alpha(@surface_container_highest, 0);
@@ -275,7 +288,7 @@ tooltip label {
     font-family: "Typedeer Mono";
     font-weight: 600;
     font-size: 14px;
-    margin: -15 15 -18 0;
+    margin: -15 18 -18 0;
     color: lighter(@main-color);
 }
 
@@ -288,8 +301,8 @@ tooltip label {
 }
 
 #battery {
-    font: bold 14px "Typedeer Mono";
-    margin: -1 10 0 -8;
+    font: bold 12px "Typedeer Mono";
+    margin: 0 10 0 -8;
     color: @on_surface;
 }
 

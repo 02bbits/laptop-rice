@@ -1,6 +1,6 @@
 {
     "include": "~/.config/waybar/modules.jsonc",
-    "width": 1220,
+    "width": 1000,
     // "width": 45,
     "margin-top": 8,
     // "position": "left",
@@ -16,7 +16,7 @@
     "modules-center": [
         // "group/info",
         "seperator-left",
-        "niri/workspaces",
+        "niri/workspaces#word",
         "seperator",
         "group/utils"
     ],

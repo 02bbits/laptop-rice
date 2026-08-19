@@ -1,0 +1,17 @@
+{
+    "include": "~/.config/waybar/custom-modules.jsonc",
+    "width": 1000,
+    // "width": 45,
+    "margin-top": 8,
+    // "position": "left",
+    "height": 45,
+    // "height": 700,
+    "spacing": 10,
+    "margin-bottom": 7,
+    "reload_style_on_change": true,
+    "modules-center": [
+        "custom/dec-left",
+        "group/bar",
+        "custom/dec-right",
+    ],
+}

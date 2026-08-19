@@ -1,9 +1,9 @@
 /* ─────────────── CORE ─────────────────────────────────────────────────────── */
 {
   "custom/username": {
-    "format": "<span font='12'>󰈈</span>    {0}",
+    "format": "<span font='15'></span>    {0}",
     "exec": "whoami",
-    "on-click": "sh $HOME/.config/scripts/niri/launch_drun.sh",
+    "on-click": "rofi -show drun -sorting-method fzf -sort",
     "tooltip": false,
   },
   "custom/launcher": {
@@ -122,7 +122,7 @@
     "disable-scroll": true,
     "all-outputs": false,
     "warp-on-scroll": false,
-    "format": "  {icon} ",
+    "format": " {icon}  ",
     "format-icons": {
       "1": "Ox",
       "2": "Tw",
@@ -144,16 +144,12 @@
     "calendar": {
       "mode": "month",
       "on-scroll": 1,
-        "mode"          : "year",
-        "mode-mon-col"  : 3,
-        "on-scroll"     : 1,
-        "on-click-right": "mode",
       "format": {
-        "months": "<span font='9' color='#f0ebd8'><b>{}</b></span>",
+        "months": "<span font='9' color='#ffffff'><b>{}</b></span>",
         "days": "<span font='9' color='#888989'>{}</span>",
-        "weeks": "<span color='#eeece3'>{:%W}</span>",
+        "weeks": "<span color='#eeece3'>{:%U}</span>",
         "weekdays": "<span color='#eeece3'>{}</span>",
-        "today": "<span color='#b01949'><b><u>{}</u></b></span>",
+        "today": "<span color='#ffffff'><b>{}</b></span>",
       },
     },
     "actions": {
@@ -171,6 +167,33 @@
     },
     "modules": ["custom/arrow-left", "custom/playerlabel", "custom/updates"],
   },
+
+  "group/bar": {
+    "orientation": "inherit",
+    "modules": [
+        "custom/username",
+        "group/system-info",
+        "seperator-left",
+        "niri/workspaces#word",
+        "custom/seperator",
+        "group/utils",
+        "group/system",
+        "battery",
+        "custom/notifications",
+        "clock"
+        ],
+  },
+
+    "custom/decorator-left-echo": {
+    "format": "<span font='16' color='#ffffff'>||</span> <span font='12' color='#ffffff'>||</span> <span font='8' color='#ffffff'>||</span>",
+    "tooltip": false,
+  },
+
+    "custom/decorator-right-echo": {
+        "format": "<span font='8' color='#ffffff'>||</span> <span font='12' color='#ffffff'>||</span> <span font='16' color='#ffffff'>||</span>",
+        "tooltip": false,
+    },
+
   "group/system-info": {
     "orientation": "inherit",
     "click-to-reveal": true,
@@ -248,14 +271,14 @@
   },
   /* ─────────────── MÓDULOS DE SISTEMA ─────────────────────────────────────── */
   "cpu": {
-    "format": "<span font='12'>󰘚</span>  {usage}󱉸",
+    "format": "󰘚  {usage}󱉸",
   },
   "memory": {
-    "format": "<span font='12'></span>  {:2}󱉸",
+    "format": "  {:2}󱉸",
   },
   "disk": {
     "interval": 600,
-    "format": "<span font='12'>󰆼</span>  {percentage_used}󱉸",
+    "format": "󰆼  {percentage_used}󱉸",
     "path": "/",
   },
   "custom/brightness": {
@@ -274,16 +297,16 @@
       "warning": 30,
       "critical": 15,
     },
-    "format": "<span font='12'>{icon}</span> {capacity}",
+    "format": "{icon}   {capacity}",
     "format-charging": "{icon}󱐋 {capacity}",
-    "format-full": "{icon} full",
-    "format-icons": ["󰁻", "󰁽", "󰁿", "󰂁", "󰁹"],
+    "format-full": "{icon}   full",
+    "format-icons": ["", "", "", "", ""],
     "tooltip-format": "{timeTo} {capacity} % | {power} W",
     "full-at": 80
   },
   "pulseaudio": {
-    "format": "<span font='12'>{icon}</span>{volume}",
-    "format-bluetooth": "<span font='12'>{icon}</span>{volume}",
+    "format": "{icon} {volume}",
+    "format-bluetooth": "{icon} {volume}%",
     "format-muted": "󰖁",
     "tooltip": false,
     "format-icons": {
@@ -332,19 +355,19 @@
     },
   },
   "network": {
-    "format": "{icon}",
+    "format": "{icon} ",
     "format-icons": {
       "wifi": ["󰤨 "],
       "ethernet": ["󰈁 "],
       "disconnected": [" "],
     },
-    "format-wifi": "<span font='12'>󰤨</span>  {signalStrength}",
+    "format-wifi": "󰤨  {signalStrength}%",
     "format-ethernet": "󰈁 ",
     "format-disconnected": "󰖪 ",
     "interval": 5,
     "tooltip": true,
     "tooltip-format": "{ipaddr}",
-    "tooltip-format-wifi": "<b>{essid} ({signalStrength}) \n{ipaddr} | {frequency} MHz{icon}</b>",
+    "tooltip-format-wifi": "<b>{essid} ({signalStrength}%) \n{ipaddr} | {frequency} MHz{icon}</b>",
     "tooltip-format-ethernet": "{ifname} 󰈀\n{ipaddr} | {frequency} MHz{icon}",
     "tooltip-format-disconnected": "Not Connected to any type of Network",
     "on-click": "hyprctl dispatch exec '[float] ghostty -e sh -c \"export NEWT_COLORS=$(<~/.config/nmtui/palette); nmtui\"'",
@@ -473,15 +496,30 @@
     "tooltip": true,
     "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
     "format-icons": {
-      "default": " power",
-      "balanced": "󰚀 equal",
-      "power-saver": "󱈑 peace",
+      "default": "  power",
+      "balanced": "󰚀  equal",
+      "power-saver": "󱈑  peace",
     },
   },
   "tray": {
     "spacing": 8,
   },
-  "seperator": {
+  "custom/seperator": {
     "format": "    ",
   },
+    "custom/dec-left": {
+    "exec": "~/.config/waybar/test.sh",
+    "interval": 1,
+    "format": "{}",
+    "escape": false,
+    "tooltip": false
+    },
+
+    "custom/dec-right": {
+    "exec": "~/.config/waybar/test.sh",
+    "interval": 1,
+    "format": "{}",
+    "escape": false,
+    "tooltip": false
+    }
 }

@@ -1,90 +1,66 @@
 {
-"logo": {
-"type": "auto",
-"color": {"1": "red"},
-"padding": {
-    "left": 2,
-    "top": 1,
-    "bottom": 2
-}
-},
-"display": {
-"separator": " "
-},
-"modules": [
+  "logo": {
+    "type": "auto",
+    "color": {"1": "red"},
+    "padding": {
+      "left": 2,
+      "bottom": 5,
+    }
+  },
+  "display": {
+    "separator": "  "
+  },
+  "modules": [
     "break",
     {
-      "type": "custom",
-      "keyColor": "white",
-      "format": "╭─────────────╮"
+      "type": "users",
+      "key": "  \u001b[31m·\u001b[0m",
+      "format": "\u001b[31m{1}\u001b[0m"
     },
     {
-    "type": "users",
-    "key": "\u001b[39m│\u001b[31m  \u001b[39m user     │",
-    "keyColor": "red",
-    "format": "\u001b[31m{#1}{1}"
+      "type": "os",
+      "key": "  \u001b[90m·\u001b[0m",
+      "format": "\u001b[90m{3}\u001b[0m"
     },
     {
-    "type": "os",
-    "key": "\u001b[39m│ \u001b[33m \u001b[39m distro   │",
-    "keyColor": "yellow",
-    "format": "\u001b[33m{#1}{3}"
+      "type": "kernel",
+      "key": "  \u001b[90m·\u001b[0m",
+      "format": "\u001b[90m{2}\u001b[0m"
     },
     {
-    "type": "kernel",
-    "key": "\u001b[39m│ \u001b[32m  \u001b[39mkernel   │",
-    "keyColor": "green",
-    "format": "\u001b[32m{#1}{2}"
+      "type": "wm",
+      "key": "  \u001b[90m·\u001b[0m",
+      "format": "\u001b[90m{1}\u001b[0m"
     },
     {
-    "type": "packages",
-    "key": "\u001b[39m│ \u001b[36m  \u001b[39mpackages │",
-    "keyColor": "cyan",
-    "format": "\u001b[36m{#1}{}"
+      "type": "shell",
+      "key": "  \u001b[90m·\u001b[0m",
+      "format": "\u001b[90m{1}\u001b[0m"
     },
     {
-    "type": "wm",
-    "key": "\u001b[39m│ \u001b[34m  \u001b[39mDE/WM    │",
-    "keyColor": "blue",
-    "format": "\u001b[34m{#1}{1}"
+      "type": "cpu",
+      "key": "  \u001b[90m·\u001b[0m",
+      "format": "\u001b[90m{1}\u001b[0m"
     },
     {
-    "type": "shell",
-    "key": "\u001b[39m│ \u001b[35m  \u001b[39mshell    │",
-    "keyColor": "magenta",
-    "format": "\u001b[35m{#1}{1}"
+      "type": "memory",
+      "key": "  \u001b[90m·\u001b[0m",
+      "format": "\u001b[90m{2}\u001b[0m"
     },
+    "break",
+    // {
+    //   "type": "custom",
+    //   "key": "  \u001b[31m─────────────────\u001b[0m",
+    //   "format": "",
+    //   "separator": false
+    // },
+    // "break",
     {
-    "type": "cpu",
-    "key": "\u001b[39m│ \u001b[31m  \u001b[39mcpu      │",
-    "keyColor": "red",
-    "format": "\u001b[31m{#1}{1}"
-    },
-    {"type": "memory",
-    "key": "\u001b[39m│ \u001b[33m  \u001b[39mmemory   │",
-    "format": "\u001b[33m{#1}{2}",
-    "keyColor": "yellow"
-    },
-
-    {
-      "type": "custom",
-      "keyColor": "white",
-      "key": "├─────────────┤",
-      "format": "",
-      "separator": false
-    },
-
-    {
-    "type": "custom",
-    "keyColor": "green",
-    "key": "\u001b[39m│   \u001b[39mcolors   │",
-    "format": "\u001b[90m  \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m  \u001b[38m  \u001b[39m "
-    },
-    {
-      "type": "custom",
-      "keyColor": "white",
-      "key": "╰─────────────╯\n",
-      "format": ""
-    }
-    ]
+        "type": "custom",
+        "keyColor": "green",
+        "key": "  ",
+        "format": "\u001b[90m  \u001b[31m  \u001b[33m  \u001b[32m  \u001b[34m  \u001b[36m  \u001b[35m  \u001b[37m  \u001b[38m  \u001b[39m "
+        },
+    "break"
+  ]
 }

@@ -93,14 +93,15 @@ fi
 # Aliases
 
 alias hv="nvim $HOME/.config/hypr/hyprland.conf"
+alias niriconf="nvim $HOME/.config/niri/config.kdl"
 alias zshconf="nvim ~/.zshrc"
 alias ls='eza -a --icons auto -s type'
 alias ll='eza -al --icons auto'
 alias lt='eza -a --tree --level=1 --icons'
 alias l='eza --icons auto'
-alias py='python'
+# alias py='python'
 alias lsf='ls|fzf'
-alias ff="fastfetch --logo $HOME/.config/fastfetch/ascii.txt --logo-position left"
+alias ff="echo && fastfetch --logo $HOME/.config/fastfetch/picture.png --logo-position left && echo"
 alias run="~/.config/scripts/user/run.sh"
 # alias zed="flatpak run dev.zed.Zed $1"
 alias nivm='nvim'
@@ -115,6 +116,8 @@ function yac() {
         rm -f "$tmp"
         [ -d "$dir" ] && cd "$dir"
     fi
+
+    zle && zle reset-prompt 2>/dev/null
 }
 
 # fzf-zoxide-widget() {
@@ -204,3 +207,4 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 export PATH=/home/bdora/.opencode/bin:$PATH
 export PATH=/home/bdora/dotfiles/scripts/.config/scripts/user/:$PATH
 
+setopt HIST_IGNORE_SPACE

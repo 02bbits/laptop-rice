@@ -1,0 +1,147 @@
+@theme "hybrid.rasi"
+
+configuration {
+    show-icons:          false;
+    font:                "FiraCode Nerd Font 13";
+}
+
+window {
+    width:            450px;
+    background-color: @background;
+    border-radius:    20px;
+    border-color:     #2a2a2a;
+    border:           2px;
+    location:         north;
+    anchor:           north;
+    padding:          0px;
+    y-offset:         0px;
+}
+
+mainbox {
+    padding:          0px;
+    spacing:          0px;
+    background-color: transparent;
+    children:         [ headerbar, inputbar, listview ];
+}
+
+/*****----- Header -----*****/
+headerbar {
+    padding:          22px 20px 12px 20px;
+    spacing:          0px;
+    background-color: #0e0e0e;
+    // border:           0px 0px 1px 0px;
+    border-color:     #1f1f1f;
+    orientation:      horizontal;
+    children:         [ textbox-header];
+    expand:           false;
+}
+
+textbox-header {
+    // content:          "$ command pallete ";
+    font:             "FiraCode Nerd Font Bold 13";
+    text-color:       #b01949;
+    background-color: transparent;
+    expand:           true;
+    horizontal-align: 0;
+    vertical-align:   0.5;
+    letter-spacing:   3px;
+}
+
+textbox-status {
+    content:          "esc to close";
+    font:             "FiraCode Nerd Font 9";
+    text-color:       #2a2a2a;
+    background-color: transparent;
+    expand:           false;
+    horizontal-align: 1;
+    vertical-align:   0.5;
+}
+
+/*****----- Input -----*****/
+inputbar {
+    spacing:          0px;
+    padding:          14px 20px;
+    background-color: #0e0e0e;
+    border:           0px 0px 1px 0px;
+    border-color:     #1f1f1f;
+    children:         [ textbox-prompt, entry, textbox-status ];
+}
+
+textbox-prompt {
+    content:          "<0>";
+    font:             "FiraCode Nerd Font 13";
+    text-color:       #b01949;
+    background-color: transparent;
+    expand:           false;
+    horizontal-align: 0.5;
+    vertical-align:   0.5;
+    margin:           0px 10px 0px 0px;
+}
+
+entry {
+    placeholder:      "select a command..";
+    placeholder-color: #353535;
+    background-color: transparent;
+    text-color:       #e2e2e2;
+    padding:          0px;
+    font:             "FiraCode Nerd Font 13";
+    // cursor:           text;
+    border:           0px;
+    vertical-align:   0.5;
+}
+
+/*****----- List -----*****/
+listview {
+    spacing:          0px;
+    padding:          8px 12px 12px 12px;
+    background-color: transparent;
+    scrollbar:        false;
+    lines:            8;
+    fixed-height:     false;
+    columns:          2;
+}
+
+element {
+    padding:          9px 0px 8px 15px;
+    spacing:          0px;
+    border:           0px;
+    border-radius:    6px;
+    background-color: transparent;
+    text-color:       #919191;
+    cursor:           pointer;
+}
+
+element-icon {
+    enabled:          false;
+    size:             0px;
+}
+
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
+    highlight:        #b01949;
+    cursor:           inherit;
+    font:             "FiraCode Nerd Font 13";
+}
+
+element.selected.normal {
+    background-color: #2a2a2a;
+    text-color:       #e2e2e2;
+    highlight:        #e2e2e2;
+}
+
+element.normal.active {
+    text-color:       #474747;
+    highlight:        #474747;
+}
+
+element.selected.active {
+    background-color: #2a2a2a;
+    text-color:       #b01949;
+    highlight:        #b01949;
+}
+
+/*****----- No extras -----*****/
+mode-switcher { enabled: false; }
+message       { enabled: false; }
+prompt        { enabled: false; }
