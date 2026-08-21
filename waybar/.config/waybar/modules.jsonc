@@ -334,11 +334,11 @@
   "network": {
     "format": "{icon}",
     "format-icons": {
-      "wifi": ["󰤨 "],
+      "wifi": [ "󰤯", "󰤟", "󰤢", "󰤥", "󰤨" ],
       "ethernet": ["󰈁 "],
       "disconnected": [" "],
     },
-    "format-wifi": "<span font='12'>󰤨</span>  {signalStrength}",
+    "format-wifi": "<span font='12'>{icon}</span>   {signalStrength}",
     "format-ethernet": "󰈁 ",
     "format-disconnected": "󰖪 ",
     "interval": 5,
