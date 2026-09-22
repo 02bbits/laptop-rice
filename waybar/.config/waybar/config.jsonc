@@ -1,31 +1,32 @@
 {
     "include": "~/.config/waybar/modules.jsonc",
-    "width": 1000,
-    // "width": 45,
-    "margin-top": 8,
-    // "position": "left",
-    "height": 45,
-    // "height": 700,
-    "spacing": 10,
-    "margin-bottom": 7,
     "reload_style_on_change": true,
+
+    // Horizontal bar. Vertical variant lives in vertical-bar.jsonc.
+    "width": 1000,
+    "height": 45,
+    "spacing": 10,
+    "margin-top": 8,
+    "margin-bottom": 7,
+
+    // identity, then machine telemetry
     "modules-left": [
         "custom/username",
-        "group/system-info"
+        "group/system-info"      // custom/seperator-right, cpu, memory, disk
     ],
+
+    // workspaces alone, so the centre stays the centre
     "modules-center": [
         // "group/info",
-        "seperator-left",
         "niri/workspaces#word",
-        "seperator",
         "group/utils"
     ],
+
+    // ambient -> connectivity -> power -> alerts -> time
     "modules-right": [
-        // "custom/brightness",
-        //"group/control-center",
-        "group/system",
+        "group/system",          // custom/seperator-left, network, pulseaudio, power-profiles-daemon
         "battery",
         "custom/notifications",
-        "clock",
+        "clock"
     ]
 }

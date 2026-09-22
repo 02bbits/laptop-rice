@@ -1,11 +1,7 @@
 {
   "logo": {
     "type": "auto",
-    "color": {"1": "red"},
-    "padding": {
-      "left": 2,
-      "bottom": 5,
-    }
+    "color": {"1": "red"}
   },
   "display": {
     "separator": "  "

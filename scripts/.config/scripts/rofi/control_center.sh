@@ -12,7 +12,7 @@ declare -A actions=(
     ["󰖐  weather"]="$SCRIPTS/weather.sh"
     ["󰍹  display"]="$SCRIPTS/display.sh"
     ["󰸉  wallpaper"]="$SCRIPTS/wallpaper.sh"
-    # ["  emoji"]="$SCRIPTS/emoji.sh"
+    ["󱄺  ocr"]="$SCRIPTS/ocr.sh"
     # ["  snippets"]="$SCRIPTS/snippets.sh"
     # ["  color picker"]="$SCRIPTS/colorpicker.sh"
     # ["  power"]="$SCRIPTS/power.sh"
@@ -26,20 +26,16 @@ menu="\
   clipboard
 󰖐  weather
 󰍹  display
-󰸉  wallpaper"
+󰸉  wallpaper
+󱄺  ocr"
 
 BAT=$(cat /sys/class/power_supply/BAT1/capacity)
 TIME=$(date "+%H:%M")
 
-THEME_STR="
-textbox-header { content: \"command palette\"; }
-"
-
 chosen=$(echo "$menu" | rofi \
     -dmenu \
     -p "" \
-    -config $CONFIG \
-    -theme-str "$THEME_STR")
+    -config $CONFIG)
 
 [[ -z "$chosen" ]] && exit
 

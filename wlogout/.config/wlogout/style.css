@@ -12,10 +12,11 @@ window {
 
 button {
 	font: bold 24px "FiraCode Nerd Font";
-	background-color: rgba(2, 3, 5, 0.3);
-	color: #eeece3;
-	border-radius: 20px;
-    text-decoration-color: #cdd6f4;
+	/* background-color: rgba(2, 3, 5, 0.35); */
+	background-color: transparent;
+	color: #f0ebd8;
+	border-radius: 16px;
+    text-decoration-color: #f0ebd8;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 45%;
@@ -28,8 +29,8 @@ button {
 button:focus,
 button:active,
 button:hover {
-	background-color: rgba(17,16,17,0.9);
-    border: 2px solid #f0ebd8;
+	background-color: rgba(27,27,27,0.9);
+    border: 2px solid #ffffff;
     margin-top: 5rem;
     margin-bottom: 5rem;
 }

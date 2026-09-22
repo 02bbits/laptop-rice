@@ -7,6 +7,12 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "language_models": {
+    "anthropic_compatible": {
+      
+    }
+  },
+  "disable_ai": false,
   "rounded_selection": true,
   "cli_default_open_behavior": "existing_window",
   "project_panel": {
@@ -20,15 +26,32 @@
     "dock": "right"
   },
   "git_panel": {
-    "dock": "right"
+    "dock": "left"
   },
   "colorize_brackets": true,
   "agent": {
-    "dock": "left",
+    "sidebar_side": "right",
+    "tool_permissions": {
+      "tools": {
+        "terminal": {
+          "default": "allow"
+        }
+      }
+    },
+    "sandbox_permissions": {
+      "network_hosts": [
+        "dl.acm.org",
+        "api.crossref.org",
+        "doi.org",
+        "raw.githubusercontent.com"
+      ]
+    },
+    "dock": "right",
     "model_parameters": [],
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-latest"
+      "enable_thinking": false,
+      "provider": "AgentShop247",
+      "model": "claude-opus-5"
     }
   },
   "icon_theme": {
@@ -54,7 +77,7 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "Ink"
+    "dark": "One Dark Pro Max"
   },
   "theme_overrides": {
     "Tomorrow at Midnight": {

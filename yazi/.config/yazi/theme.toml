@@ -1,4 +1,235 @@
-[flavor]
-use = "tokyo-night"
-# For Yazi 0.4 and above
-dark = "tokyo-night"
+# vim:fileencoding=utf-8:foldmethod=marker
+
+# : Manager {{{
+
+[mgr]
+cwd = { fg = "#eeece3" }
+
+# Find
+find_keyword  = { fg = "#f7768e", bold = true, italic = true, underline = true }
+find_position = { fg = "#bb9af7", bg = "reset", bold = true, italic = true }
+
+# Marker
+marker_copied   = { fg = "#9ece6a", bg = "#9ece6a" }
+marker_cut      = { fg = "#e0af68", bg = "#f7768e" }
+marker_marked   = { fg = "#eeece3", bg = "#7dcfff" }
+marker_selected = { fg = "#e0af68", bg = "#e0af68" }
+
+# Count
+count_copied   = { fg = "#1a1b26", bg = "#9ece6a" }
+count_cut      = { fg = "#1a1b26", bg = "#e0af68" }
+count_selected = { fg = "#1a1b26", bg = "#eeece3" }
+
+# Border
+border_symbol = "│"
+border_style  = { fg = "#414868" }
+
+# : }}}
+
+
+# : Indicator {{{
+# (was [mgr].hovered / [mgr].preview_hovered before yazi #3419)
+
+[indicator]
+current = { reversed = true }
+preview = { underline = true }
+
+# : }}}
+
+
+# : Tabs {{{
+
+[tabs]
+active   = { fg = "#292e42", bg = "#eeece3", bold = true }
+inactive = { fg = "#eeece3", bg = "#292e42" }
+
+# : }}}
+
+
+# : Mode {{{
+
+[mode]
+
+normal_main = { fg = "#292e42", bg = "#eeece3", bold = true }
+normal_alt  = { fg = "#eeece3", bg = "#292e42" }
+
+# Select mode
+select_main = { fg = "#292e42", bg = "#9ece6a", bold = true }
+select_alt  = { fg = "#eeece3", bg = "#292e42" }
+
+# Unset mode
+unset_main = { fg = "#292e42", bg = "#bb9af7", bold = true }
+unset_alt  = { fg = "#eeece3", bg = "#292e42" }
+
+# : }}}
+
+
+# : Status bar {{{
+
+[status]
+overall = { fg = "#eeece3" }
+sep_left  = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+
+
+# Progress
+progress_label = { fg = "#292e42", bold = true }
+progress_normal = { fg = "#eeece3", bg = "#292e42" }
+progress_error = { fg = "#f7768e", bg = "#292e42" }
+
+# Permissions
+perm_sep   = { fg = "#eeece3" }
+perm_type  = { fg = "#9ece6a" }
+perm_read  = { fg = "#e0af68" }
+perm_write = { fg = "#f7768e" }
+perm_exec  = { fg = "#bb9af7" }
+
+
+# : }}}
+
+# : Pick {{{
+
+[pick]
+border = { fg = "#eeece3" }
+active = { fg = "#bb9af7", bold = true }
+inactive = {}
+
+# : }}}
+
+
+# : Input {{{
+
+[input]
+border   = { fg = "#eeece3" }
+title    = {}
+value    = {}
+selected = { reversed = true }
+
+# : }}}
+
+
+# : Completion {{{
+
+[cmp]
+border = { fg = "#eeece3" }
+
+# : }}}
+
+
+# : Tasks {{{
+
+[tasks]
+border  = { fg = "#eeece3" }
+title   = {}
+hovered = { fg = "#bb9af7", underline = true }
+
+# : }}}
+
+
+# : Which {{{
+
+[which]
+mask            = { bg = "#414868" }
+cand            = { fg = "#9ece6a" }
+rest            = { fg = "#a9b1d6" }
+desc            = { fg = "#bb9af7" }
+separator       = "  "
+separator_style = { fg = "#626880" }
+
+# : }}}
+
+
+# : Help {{{
+# on -> chord, run/desc -> action, footer removed (yazi #4074)
+
+[help]
+chord   = { fg = "#9ece6a" }
+action  = { fg = "#bb9af7" }
+hovered = { reversed = true, bold = true }
+
+# : }}}
+
+
+# : Notify {{{
+
+[notify]
+title_info  = { fg = "#9ece6a" }
+title_warn  = { fg = "#f7768e" }
+title_error = { fg = "#e0af68" }
+
+# : }}}
+
+
+# : File-specific styles {{{
+
+[filetype]
+
+rules = [
+	# Images
+	{ mime = "image/*", fg = "#e0af68" },
+
+	# Media
+	{ mime = "video/*", fg = "#f7768e" },
+	{ mime = "audio/*", fg = "#f7768e" },
+
+	# Archives
+	{ mime = "application/zip",             fg = "#bb9af7" },
+	{ mime = "application/x-tar",           fg = "#bb9af7" },
+	{ mime = "application/x-bzip*",         fg = "#bb9af7" },
+	{ mime = "application/x-bzip2",         fg = "#bb9af7" },
+	{ mime = "application/x-7z-compressed", fg = "#bb9af7" },
+	{ mime = "application/x-rar",           fg = "#bb9af7" },
+	{ mime = "application/x-xz",            fg = "#bb9af7" },
+
+	# Documents
+	{ mime = "application/doc",        fg = "#9ece6a" },
+	{ mime = "application/epub+zip",   fg = "#9ece6a" },
+	{ mime = "application/pdf",        fg = "#9ece6a" },
+	{ mime = "application/rtf",        fg = "#9ece6a" },
+	{ mime = "application/vnd.*",      fg = "#9ece6a" },
+
+    # Dir 
+    { url = "*/", fg = "#ffffff" },
+]
+
+[icon]
+prepend_conds = [
+	{ if = "hidden & dir",  text = "󰊠" },  # Hidden directories
+	{ if = "dir",           text = "󰉋", fg = "#FFFFFF"},  # Directories
+]
+
+dirs = [
+	{ name = ".config", text = "", fg = "#f5c2e7" },
+	{ name = ".git", text = "", fg = "#94e2d5" },
+	{ name = ".github", text = "", fg = "#89b4fa" },
+	{ name = ".npm", text = "", fg = "#89b4fa" },
+	{ name = "Desktop", text = "", fg = "#94e2d5" },
+	{ name = "Development", text = "", fg = "#94e2d5" },
+	{ name = "Documents", text = "", fg = "#94e2d5" },
+	{ name = "Downloads", text = "", fg = "#94e2d5" },
+	{ name = "Library", text = "", fg = "#94e2d5" },
+	{ name = "Movies", text = "", fg = "#94e2d5" },
+	{ name = "Music", text = "", fg = "#94e2d5" },
+	{ name = "Pictures", text = "", fg = "#94e2d5" },
+	{ name = "Public", text = "", fg = "#94e2d5" },
+	{ name = "Videos", text = "", fg = "#94e2d5" },
+]
+conds = [
+	# Special files
+	{ if = "orphan", text = "", fg = "#cdd6f4" },
+	{ if = "link", text = "", fg = "#7f849c" },
+	{ if = "block", text = "", fg = "#f2cdcd" },
+	{ if = "char", text = "", fg = "#f2cdcd" },
+	{ if = "fifo", text = "", fg = "#f2cdcd" },
+	{ if = "sock", text = "", fg = "#f2cdcd" },
+	{ if = "sticky", text = "", fg = "#f2cdcd" },
+	{ if = "dummy", text = "", fg = "#f38ba8" },
+
+	# Fallback
+	{ if = "dir & hovered", text = "", fg = "#89b4fa" },
+	# { if = "dir", text = "", fg = "#89b4fa" },
+	{ if = "exec", text = "", fg = "#a6e3a1" },
+	{ if = "!dir", text = "", fg = "#cdd6f4" },
+]
+
+# : }}}

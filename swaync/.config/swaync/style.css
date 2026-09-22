@@ -1,21 +1,31 @@
-@define-color theme_fg #d6d6d6;
-@define-color theme_fg_secondary rgba(214, 214, 214, 0.78);
-@define-color theme_bg #000000;
-@define-color popup_bg #000000;
-@define-color module_bg #0e0e0e;
-@define-color module_hover_bg #171617;
-@define-color button_bg #171617;
-@define-color button_hover_bg #222222;
-@define-color accent_color #c2c2c2;
-@define-color accent_color_hover #c2c2c2;
-@define-color border_color #1f1d20;
-@define-color icon_primary @theme_fg;
-@define-color icon_secondary rgba(214, 214, 214, 0.5);
-@define-color slider_trough_bg #1a1a1a;
-@define-color slider_thumb_bg #d6d6d6;
-@define-color close_button_bg transparent;
-@define-color close_button_hover_bg #1f1d20;
-@define-color mpris_player_bg #0e0e0e;
+/* Ink tokens — mirrors colors.toml. */
+
+/* Surfaces */
+@define-color theme_bg          #020305;
+@define-color popup_bg          #020305;
+@define-color module_bg         #0e0e0e;
+@define-color mpris_player_bg   #0e0e0e;
+@define-color module_hover_bg   #1b1b1b;
+@define-color button_bg         #1b1b1b;
+@define-color button_hover_bg   #2a2a2a;
+@define-color slider_trough_bg  #1b1b1b;
+
+/* Lines */
+@define-color border_color      #2a2a2a;
+
+/* Text */
+@define-color theme_fg          #f0ebd8;
+@define-color theme_fg_secondary #a8a8a8;
+@define-color icon_primary      @theme_fg;
+@define-color icon_secondary    #a8a8a8;
+@define-color slider_thumb_bg   #f0ebd8;
+
+/* Accent — urgency and active toggles only */
+@define-color accent_color       #b01949;
+@define-color accent_color_hover #c9265a;
+
+@define-color close_button_bg       transparent;
+@define-color close_button_hover_bg #2a2a2a;
 
 /* ── Base Reset ───────────────────────────────────────────── */
 * {
@@ -35,8 +45,8 @@
 /* ── Control Center ───────────────────────────────────────── */
 .control-center {
   background-color: @theme_bg;
-  border: 1px solid #2a2a2a;
-  border-radius: 20px;
+  border: 2px solid @border_color;
+  border-radius: 16px;
   padding: 12px;
   min-width: 360px;
 }
@@ -48,7 +58,7 @@
 .widget-buttons-grid,
 .control-center-list > box > *:not(.widget-title) {
   background-color: @module_bg;
-  border-radius: 20px;
+  border-radius: 16px;
   margin-bottom: 8px;
   border: 1px solid @border_color;
 }
@@ -79,14 +89,13 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   color: @icon_secondary;
-  text-transform: lowercase;
   background: none;
 }
 
 .widget-title button {
   font-size: 14px;
   color: @icon_secondary;
-  border-radius: 20px;
+  border-radius: 16px;
   padding: 2px 12px;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
@@ -105,21 +114,21 @@
 }
 .widget-mpris .widget-mpris-player {
   background-color: @mpris_player_bg;
-  border-radius: 12px;
-  border: 2px solid #1f1d20;
+  border-radius: 8px;
+  border: 1px solid @border_color;
   padding: 16px;
 }
 .widget-mpris .widget-mpris-album-art {
   background: none;
   min-width: 60px;
   min-height: 60px;
-  border-radius: 16px;
+  border-radius: 8px;
   margin-right: 12px;
 }
 .widget-mpris .widget-mpris-title {
   font-size: 20px;
   font-weight: 800;
-  color: #ffffff;
+  color: @theme_fg;
   text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.9),
                0px 0px 8px rgba(0, 0, 0, 0.7);
   margin-bottom: 4px;
@@ -160,7 +169,7 @@
 
 .widget-volume label,
 .widget-backlight label {
-  font-size: 14px;
+  font-size: 18px;
   color: @icon_secondary;
   min-width: 18px;
   margin-right: 10px;
@@ -168,7 +177,7 @@
 
 scale {
   margin: 0;
-  padding: 2;
+  padding: 2px;
 }
 
 scale trough {
@@ -201,7 +210,7 @@ scale slider {
 }
 
 scale:hover slider {
-  background-color: #ffffff;
+  background-color: @theme_fg;
 }
 
 /* ── Button Grid ──────────────────────────────────────────── */
@@ -220,12 +229,13 @@ scale:hover slider {
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button {
+  font-family: Inter;
+  font-size: 20px;
   background-color: @button_bg;
   border-radius: 66px;
   padding: 10px 14px;
   min-width: 50px;
   min-height: 25px;
-  color: @icon_secondary;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 
@@ -236,7 +246,7 @@ scale:hover slider {
 
 .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
   background-color: @accent_color;
-  color: #000000;
+  color: @theme_fg;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked:hover {
@@ -257,7 +267,7 @@ scale:hover slider {
   background-color: @module_bg;
   border: 1px solid @border_color;
   padding: 14px;
-  border-radius: 20px;
+  border-radius: 16px;
   transition: background-color 0.15s ease;
 }
 
@@ -304,7 +314,7 @@ scale:hover slider {
   margin-right: 12px;
   min-width: 36px;
   min-height: 36px;
-  border-radius: 12px;
+  border-radius: 8px;
 }
 
 /* ── Floating Notifications ───────────────────────────────── */
@@ -314,15 +324,15 @@ scale:hover slider {
 
 .floating-notifications .notification-background {
   background-color: @popup_bg;
-  border: 1px solid #2a2a2a;
-  border-radius: 20px;
+  border: 2px solid @border_color;
+  border-radius: 16px;
   padding: 14px 16px;
   margin: 6px 12px;
   transition: background-color 0.15s ease;
 }
 
 .floating-notifications .notification-row:hover .notification-background {
-  background-color: #0a0a0a;
+  background-color: @module_hover_bg;
 }
 
 .floating-notifications .notification .summary {
@@ -346,7 +356,7 @@ scale:hover slider {
   min-width: 40px;
   min-height: 40px;
   margin-right: 12px;
-  border-radius: 12px;
+  border-radius: 8px;
 }
 
 .floating-notifications .close-button {
@@ -368,7 +378,7 @@ scale:hover slider {
 .floating-notifications .notification-alt-actions {
   margin-top: 12px;
   padding-top: 12px;
-  border-top: 1px solid #2a2a2a;
+  border-top: 1px solid @border_color;
 }
 
 .floating-notifications .notification-action button,
@@ -376,7 +386,7 @@ scale:hover slider {
   font-size: 12px;
   color: @theme_fg;
   background-color: @button_bg;
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 6px 14px;
   transition: background-color 0.15s ease;
 }
@@ -395,7 +405,6 @@ scale:hover slider {
   font-weight: 600;
   letter-spacing: 0.08em;
   color: @icon_secondary;
-  text-transform: lowercase;
 }
 
 .widget-dnd > switch {

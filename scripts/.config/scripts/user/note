@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NOTE_DIR="$HOME/Documents/Obsidian/bb02Vault/personal/daily"
+NOTE_DIR="$HOME/Documents/Obsidian/personal/daily"
 
 show_help() {
     cat <<EOF
@@ -30,7 +30,7 @@ EOF
 }
 
 if [ $# -eq 0 ]; then
-    bat -l md "$(eza --absolute -s created "$NOTE_DIR" -r | grep -v 'Weekly Review.*' | head -n 1)" --theme zenburn --line-range 5:
+    bat -l md "$(eza --absolute -s created "$NOTE_DIR" -r | grep -v 'Weekly Review.*' | head -n 1)" --theme zenburn --line-range 7:
     exit 0
 fi
 
@@ -43,7 +43,7 @@ while getopts "levh" opt; do
         ;;
     l)
         option=$(find "$NOTE_DIR" -maxdepth 1 -type f -printf '%f\n' | sort -r | grep -v 'Weekly Review.*' | fzf)
-        [ -n "$option" ] && bat -l md "$NOTE_DIR/$option" --color=always --theme zenburn --line-range 5:
+        [ -n "$option" ] && bat -l md "$NOTE_DIR/$option" --color=always --theme zenburn --line-range 7:
         exit 0
         ;;
     v)
@@ -68,7 +68,7 @@ while getopts "levh" opt; do
             --scrollbar="▐" \
             --height=60% \
             --info=inline-right \
-            --preview='NOTE_DIR="$HOME/Documents/Obsidian/bb02Vault/personal/daily/"; bat --color=always --line-range 5: $(echo $NOTE_DIR/{});')
+            --preview='NOTE_DIR="$HOME/Documents/Obsidian/personal/daily/"; bat --color=always --line-range 7: $(echo $NOTE_DIR/{});')
         [ -n "$option" ] && bat -l md "$NOTE_DIR/$option" -f --theme zenburn
         exit 0
         ;;
@@ -93,8 +93,9 @@ if [ ! -f "$note_file" ]; then
 ---
 tags:
   - daily
+type:
+  - note
 ---
-
 EOF
 fi
 
@@ -108,4 +109,4 @@ l) emoji="📚 " ;;
 *) emoji="" ;;
 esac
 
-printf '# %s\n%s %s\n\n' "$(date +'%T')" "$emoji""$*" >>"$note_file"
+printf '# %s\n%s %s\n\n' "$(date +'%H:%M')" "$emoji""$*" >>"$note_file"

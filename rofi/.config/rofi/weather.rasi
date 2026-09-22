@@ -14,8 +14,8 @@ window {
     width:            500px;
     // height:           350px;
     background-color: @background;
-    border-radius:    20px;
-    border-color:     #2a2a2a;
+    border-radius:    16px;
+    border-color:     @border-colour;
     border:           2px;
     location:         north;
     anchor:           north;
@@ -53,9 +53,9 @@ element {
     padding:          9px 0px 8px 15px;
     spacing:          0px;
     border:           0px;
-    border-radius:    6px;
+    border-radius:    8px;
     background-color: transparent;
-    text-color:       #919191;
+    text-color:       @muted;
     cursor:           pointer;
 }
 
@@ -73,17 +73,17 @@ element-text {
 }
 
 element.selected.normal {
-    background-color: #2a2a2a;
-    text-color:       #e2e2e2;
+    background-color: @hover;
+    text-color:       @foreground;
 }
 
 element.normal.active {
-    text-color:       #474747;
+    text-color:       @dim;
 }
 
 element.selected.active {
-    background-color: #2a2a2a;
-    text-color:       #b01949;
+    background-color: @hover;
+    text-color:       @accent;
 }
 
 mode-switcher {

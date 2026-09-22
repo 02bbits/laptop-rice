@@ -40,7 +40,7 @@
     ],
     "widget-config": {
         "title": {
-            "text": "Notifications",
+            "text": "notifications",
             "clear-all-button": true,
             "button-text": " clear"
         },
@@ -53,24 +53,24 @@
             "clear-all-button": true
         },
         "dnd": {
-            "text": "Do Not Disturb"
+            "text": "do Not disturb"
         },
         "backlight": {
-            "label": "󱎴",
+            "label": "󰃠",
             "device": "intel_backlight",
             "min": 10
         },
         "backlight#KB": {
-            "label": " ",
+            "label": "󰌌",
             "device": "asus::kbd_backlight",
             "subsystem": "leds"
         },
             "volume": {
-            "label": ""
+            "label": "󰕾"
         },
         "label": {
             "max-lines": 1,
-            "text": "Control Center"
+            "text": "control Center"
         },
         "mpris": {
 			"autohide": true,
@@ -80,19 +80,19 @@
         "buttons-grid": {
             "actions": [
                 {
-                    "label": " ",
+                    "label": "󰖩 wifi",
                     "command": "nm-connection-editor"
                 },
                 {
-                    "label": "",
+                    "label": "󰂯 blue",
                     "command": "blueman-manager"
                 },
                 {
-                    "label": "",
+                    "label": "󰍬 mic",
                     "command": "sh $HOME/.config/scripts/waybar/toggle_mic.sh"
                 },
                 {
-                    "label": "󰈐",
+                    "label": "󰈐 fan",
                     "command": "sh $HOME/.config/scripts/system/rog-change-mode.sh"
                 }
             ]
