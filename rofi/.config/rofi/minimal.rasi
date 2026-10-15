@@ -5,7 +5,8 @@ configuration {
     modi:                "drun";
     show-icons:          false;
     display-drun:        "";
-    drun-display-format: "{name}";
+    text-color:       @accent;
+    drun-display-format: "{icon} {name}";
     font:                "FiraCode Nerd Font 12";
     terminal:            "/usr/bin/ghostty";
 }
@@ -52,7 +53,7 @@ textbox-prompt {
     text-color:       @accent;
     background-color: transparent;
     expand:           false;
-    margin:           5px 5px 0px 0px;
+    margin:           7px 5px 0px 0px;
 }
 
 entry {
@@ -90,7 +91,7 @@ element {
 
 element-icon {
     enabled:          true;
-    size:             20px;
+    size: 2ch;
 }
 
 element-text {

@@ -26,6 +26,7 @@
     "dock": "right"
   },
   "git_panel": {
+    "tree_view": true,
     "dock": "left"
   },
   "colorize_brackets": true,
@@ -49,9 +50,10 @@
     "dock": "right",
     "model_parameters": [],
     "default_model": {
-      "enable_thinking": false,
-      "provider": "AgentShop247",
-      "model": "claude-opus-5"
+      "effort": "MEDIUM",
+      "enable_thinking": true,
+      "provider": "zed.dev",
+      "model": "gemini-3.5-flash"
     }
   },
   "icon_theme": {

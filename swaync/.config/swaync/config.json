@@ -30,7 +30,6 @@
   "hide-on-action": true,
   "script-fail-notify": true,
     "widgets": [
-        "buttons-grid",
         "mpris",
         "dnd",
         "volume",
@@ -53,7 +52,7 @@
             "clear-all-button": true
         },
         "dnd": {
-            "text": "do Not disturb"
+            "text": "do not disturb"
         },
         "backlight": {
             "label": "󰃠",

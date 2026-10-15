@@ -1,12 +1,13 @@
 @theme "hybrid.rasi"
 
 configuration {
-    show-icons:          false;
-    font:                "FiraCode Nerd Font 13";
+    show-icons:          true;
+    font:                "FiraCode Nerd Font 12";
+    icon-theme: "Breeze";
 }
 
 window {
-    width:            450px;
+    width:            350px;
     background-color: @background;
     border-radius:    16px;
     border-color:     @border-colour;
@@ -25,10 +26,14 @@ mainbox {
 }
 
 textbox-status {
-    content:          "esc to close";
+    content:          "execute scripts";
     font:             "FiraCode Nerd Font 9";
-    text-color:       @border-colour;
+    text-color:       @dim;
+    border-color:       @border-colour;
+    padding: 0px 8px 0px 8px;
     background-color: transparent;
+    border: 1px;
+    border-radius: 8px;
     expand:           false;
     horizontal-align: 1;
     vertical-align:   0.5;
@@ -38,7 +43,7 @@ textbox-status {
 inputbar {
     spacing:          0px;
     padding:          14px 20px;
-    background-color: @surface;
+    background-color: @background;
     border:           0px 0px 1px 0px;
     border-color:     @divider;
     children:         [ textbox-prompt, entry, textbox-status ];
@@ -50,13 +55,11 @@ textbox-prompt {
     text-color:       @accent;
     background-color: transparent;
     expand:           false;
-    horizontal-align: 0.5;
-    vertical-align:   0.5;
-    margin:           0px 10px 0px 0px;
+    margin:           7px 5px 0px 0px;
 }
 
 entry {
-    placeholder:      "command name";
+    placeholder:      "/command";
     placeholder-color: @dim;
     background-color: transparent;
     text-color:       @accent;
@@ -70,19 +73,19 @@ entry {
 /*****----- List -----*****/
 listview {
     spacing:          0px;
-    padding:          8px 12px 12px 12px;
+    padding:          12px;
     background-color: transparent;
     scrollbar:        false;
-    lines:            8;
+    lines:            4;
     fixed-height:     false;
-    columns:          2;
+    columns:          1;
 }
 
 element {
-    padding:          9px 0px 8px 15px;
+    padding:          15px;
     spacing:          0px;
     border:           0px;
-    border-radius:    8px;
+    border-radius:    15px;
     background-color: transparent;
     text-color:       @muted;
     cursor:           pointer;
@@ -90,15 +93,16 @@ element {
 
 element-icon {
     enabled:          false;
-    size:             0px;
+    size:             20px;
 }
 
 element-text {
     background-color: transparent;
+    horizontal-align: 0.05;
     text-color:       inherit;
     highlight:        @accent;
     cursor:           inherit;
-    font:             "FiraCode Nerd Font 13";
+    font:             "FiraCode Nerd Font 12";
 }
 
 element.selected.normal {

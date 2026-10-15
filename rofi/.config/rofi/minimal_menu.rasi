@@ -3,7 +3,7 @@
 configuration {
     sort: true;
     modi:                "drun";
-    show-icons:          false;
+    show-icons:          true;
     display-drun:        "";
     drun-display-format: "{name}";
     font:                "FiraCode Nerd Font 13";
@@ -68,7 +68,7 @@ element {
 
 element-icon {
     enabled:          false;
-    size:             0px;
+    size:             20ch;
 }
 
 element-text {

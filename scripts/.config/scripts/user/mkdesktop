@@ -1,0 +1,27 @@
+#!/bin/bash
+# Create a .desktop entry for an AppImage or custom build.
+# Usage: mkdesktop <executable> [icon]
+
+[[ -f "$1" ]] || { echo "Usage: mkdesktop <executable> [icon]" >&2; exit 1; }
+[[ -z "$2" || -f "$2" ]] || { echo "Icon not found: $2" >&2; exit 1; }
+
+exe=$(realpath "$1")
+icon=${2:+$(realpath "$2")}
+name=$(basename "$exe")
+name=${name%.[Aa]pp[Ii]mage}
+file="$HOME/.local/share/applications/$name.desktop"
+
+chmod +x "$exe"
+mkdir -p "${file%/*}"
+cat >"$file" <<EOF
+[Desktop Entry]
+Type=Application
+Name=$name
+Exec="$exe" %U
+Icon=${icon:-application-x-executable}
+Terminal=false
+Categories=Utility;
+EOF
+
+command -v update-desktop-database >/dev/null && update-desktop-database "${file%/*}"
+echo "Created $file"
