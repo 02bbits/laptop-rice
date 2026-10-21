@@ -13,7 +13,7 @@ elif [[ "$connected" =~ "disabled" ]]; then
 fi
 
 # Use rofi to select wifi network
-chosen_network=$(echo -e "$toggle\n󰑓  Reload\n$wifi_list" | uniq -u | rofi -config $HOME/.config/rofi/minimal_menu.rasi -dmenu -i -selected-row 1 -p "Wi-Fi SSID: ")
+chosen_network=$(echo -e "$toggle\n󰑓  Reload\n$wifi_list" | uniq -u | rofi -config $HOME/.config/rofi/minimal-menu.rasi -dmenu -i -selected-row 1 -p "Wi-Fi SSID: ")
 # Get name of connection
 read -r chosen_id <<<"${chosen_network:3}"
 
@@ -34,7 +34,7 @@ else
         nmcli connection up id "$chosen_id" | grep "successfully" && notify-send "Connection Established" "$success_message"
     else
         if [[ "$chosen_network" =~ "" ]]; then
-            wifi_password=$(rofi -config $HOME/.config/rofi/minimal.rasi -dmenu -p "Password: ")
+            wifi_password=$(rofi -config $HOME/.config/rofi/minimal.rasi -dmenu -theme-str 'mainbox { children: [inputbar]; } inputbar { border: 0px; } entry { placeholder: "password"; }')
         fi
         nmcli device wifi connect "$chosen_id" password "$wifi_password" | grep "successfully" && notify-send "Connection Established" "$success_message"
     fi

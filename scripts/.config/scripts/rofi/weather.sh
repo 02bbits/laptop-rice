@@ -63,14 +63,19 @@ fi
 # ── build menu ─────────────────────────────────────────────
 # prefix info lines with "##" — used below to silently ignore them
 
-chosen=$(echo -en "󰑓 refresh
- open in terminal
-                           \0nonselectable\x1ftrue
-$icon $condition  $location\0nonselectable\x1ftrue
-$temp\t\tfeels $feels\0nonselectable\x1ftrue
-$humidity humidity    $wind\0nonselectable\x1ftrue
-${rain}mm rain\t$pressure\0nonselectable\x1ftrue
-TODAY\t\t↑$day0_max  ↓$day0_min\0nonselectable\x1ftrue" | rofi \
+# glyph|text — one row each. The glyph becomes the row's icon tile (glyph-icon.sh);
+# \t in the text is expanded. Rows are info only, so all are non-selectable.
+source "$SCRIPTS_DIR/glyph-icon.sh"
+rows="$icon|$condition
+|$location
+|temp: $temp\t\tfeels $feels
+|humidity:  $humidity\t$wind
+|rain:  ${rain}\t$pressure
+󰃶|today\t\t\t↑$day0_max  ↓$day0_min"
+
+chosen=$(while IFS='|' read -r glyph text; do
+    printf '%b\0icon\x1f%s\x1fnonselectable\x1ftrue\n' "$text" "$(glyph_icon "$glyph")"
+done <<<"$rows" | rofi \
     -dmenu \
     -p "weather" \
     -config ~/.config/rofi/weather.rasi)

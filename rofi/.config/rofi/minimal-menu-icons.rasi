@@ -1,0 +1,16 @@
+/* Minimal menu with icon tiles — for scripts that pass glyph_icon images (glyph-icon.sh).
+   Same tile as command-palette.rasi: the icon sits on a rounded @surface square. */
+@import "~/.config/rofi/minimal-menu.rasi"
+
+element {
+    padding:          7px 12px;
+    spacing:          14px;
+}
+
+element-icon {
+    enabled:          true;
+    size:             18px;
+    padding:          8px;
+    border-radius:    8px;
+    background-color: @surface;
+}

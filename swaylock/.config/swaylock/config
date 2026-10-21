@@ -1,0 +1,64 @@
+# Ink — mirrors colors.toml. Needs swaylock-effects (vanilla rejects these keys).
+# Blurred, greyscaled desktop + a clock ring. Accent only on keypress.
+
+# Background: your desktop, frosted and drained of colour
+screenshots
+effect-blur=150x4
+effect-greyscale
+effect-vignette=0.9:1.9
+fade-in=0.1
+
+# Clock inside an always-visible ring
+clock
+indicator
+indicator-radius=125
+indicator-thickness=10
+timestr=%H:%M
+datestr=%d.%m.%y
+font=Typedeer Mono
+# no font-size: an explicit size ignores output scale, while the date line is
+# always radius/6. Unset, the time is radius/3 and both scale with the ring.
+
+# Behaviour
+ignore-empty-password
+show-failed-attempts
+indicator-caps-lock
+hide-keyboard-layout
+
+# Text per state (lowercase, quiet)
+text-clear=clear
+text-ver=good
+text-wrong=bad
+text-caps-lock=capslock
+
+# Inside: base #020305 at 80%, so the clock reads on any wallpaper
+inside-color=02030500
+inside-clear-color=02030500
+inside-caps-lock-color=02030500
+inside-ver-color=02030500
+inside-wrong-color=02030500
+
+line-color=00000000
+line-clear-color=00000000
+line-caps-lock-color=00000000
+line-ver-color=00000000
+line-wrong-color=00000000
+separator-color=00000000
+
+# Ring: border grey at rest, wine on keypress, cream when something needs you
+ring-color=00000000
+ring-clear-color=2a2a2a
+ring-caps-lock-color=a8a8a8
+ring-ver-color=00000000
+ring-wrong-color=f0ebd8
+
+key-hl-color=b01949
+bs-hl-color=6a6a6a
+caps-lock-key-hl-color=b01949
+caps-lock-bs-hl-color=6a6a6a
+
+text-color=f0ebd8
+text-clear-color=f0ebd8
+text-caps-lock-color=a8a8a8
+text-ver-color=a8a8a8
+text-wrong-color=f0ebd8

@@ -1,0 +1,8 @@
+/* File finder — minimal.rasi, wider for long paths. Only the differences live here. */
+@import "~/.config/rofi/minimal.rasi"
+
+window         { width: 125ch; }
+listview       { lines: 14; }
+textbox-prompt { content: " "; }
+entry          { placeholder: "file path"; }
+textbox-esc    { content: "files"; }

@@ -1,0 +1,203 @@
+// Ink bar — three islands, aligned to niri's 4px gaps and 16px window radius.
+// Self-contained on purpose: the default bar's modules.jsonc would merge its
+// drawer keys into same-named groups here. Switch bars: scripts/waybar/bar.sh
+{
+    "reload_style_on_change": true,
+    "layer": "top",
+    "position": "top",
+    "height": 42,
+    "margin-top": 8,
+    "margin-bottom": 8,
+    "margin-left": 4,
+    "margin-right": 4,
+    "spacing": 0,
+    // who / what
+    "modules-left": [
+        "custom/username",
+        "niri/window"
+    ],
+    // where, plus what's running in the background
+    "modules-center": [
+        "niri/workspaces",
+        "group/utils"
+    ],
+    // telemetry (click cpu to expand) -> connectivity -> power -> alerts -> time
+    "modules-right": [
+        "group/system-info",
+        "network",
+        "pulseaudio",
+        "battery",
+        "custom/notifications",
+        "clock"
+    ],
+    /* ── left ─────────────────────────────────────────────── */
+    "custom/username": {
+        "exec": "whoami",
+        "interval": "once",
+        "format": "{}.",
+        "on-click": "sh $HOME/.config/scripts/niri/launch_drun.sh",
+        "tooltip": false
+    },
+    "niri/window": {
+        "format": "{title}",
+        "max-length": 48,
+        "tooltip": false
+    },
+    /* ── center ───────────────────────────────────────────── */
+    "niri/workspaces": {
+        "format": "{index}", // same number as Mod+N
+        "disable-scroll": true
+    },
+    "group/utils": {
+        "orientation": "inherit",
+        "modules": [
+            "mpris",
+            "tray"
+        ]
+    },
+    "mpris": {
+        "format": "{status_icon}  {title}",
+        "status-icons": {
+            "playing": "󰐊",
+            "paused": "󰏤"
+        },
+        "title-len": 28,
+        "tooltip-format": "{player}: {artist} — {title}"
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
+    },
+    /* ── right ────────────────────────────────────────────── */
+    "group/system-info": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 250,
+            "transition-left-to-right": false,
+            "click-to-reveal": true
+        },
+        "modules": [
+            "cpu",
+            "memory",
+            "disk",
+            "power-profiles-daemon"
+        ]
+    },
+    "cpu": {
+        "format": "󰘚  {usage}%",
+        "interval": 5,
+        "tooltip": false
+    },
+    "memory": {
+        "format": "  {percentage}%",
+        "interval": 10,
+        "tooltip-format": "{used:0.1f} / {total:0.1f} GiB"
+    },
+    "disk": {
+        "format": "󰆼  {percentage_used}%",
+        "interval": 600,
+        "path": "/",
+        "tooltip-format": "{used} / {total}"
+    },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "format-icons": {
+            "default": "󰓅",
+            "performance": "󰓅",
+            "balanced": "󰾅",
+            "power-saver": "󰾆"
+        },
+        "tooltip-format": "Power profile: {profile}"
+    },
+    "network": {
+        "interval": 5,
+        "format-wifi": "{icon}",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰖪",
+        "format-icons": [
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ],
+        "tooltip-format-wifi": "{essid} · {signalStrength}%\n{ipaddr}",
+        "tooltip-format-ethernet": "{ifname}\n{ipaddr}",
+        "tooltip-format-disconnected": "Disconnected",
+        "on-click": "bash $HOME/.config/scripts/rofi/wifi.sh"
+    },
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-bluetooth": "󰂰  {volume}%",
+        "format-muted": "󰖁  {volume}%",
+        "format-icons": {
+            "headphone": "󰋋",
+            "default": [
+                "󰕿",
+                "󰖀",
+                "󰕾"
+            ]
+        },
+        "scroll-step": 3,
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "tooltip-format": "{desc}"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "full-at": 80,
+        "format": "{icon}  {capacity}%",
+        "format-charging": "󰂄  {capacity}%",
+        "format-full": "󰁹  full",
+        "format-icons": [
+            "󰁺",
+            "󰁼",
+            "󰁾",
+            "󰂀",
+            "󰁹"
+        ],
+        "tooltip-format": "{timeTo} · {power}W"
+    },
+    "custom/notifications": {
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "return-type": "json",
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "󱅫",
+            "none": "󰂚",
+            "dnd-notification": "󰂛",
+            "dnd-none": "󰂛",
+            "inhibited-notification": "󱅫",
+            "inhibited-none": "󰂚",
+            "dnd-inhibited-notification": "󰂛",
+            "dnd-inhibited-none": "󰂛"
+        },
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true,
+        "tooltip": false
+    },
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%a %d %b  %H:%M}",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "mode": "month",
+            "format": {
+                "months": "<span color='#f0ebd8'><b>{}</b></span>",
+                "weekdays": "<span color='#6a6a6a'>{}</span>",
+                "days": "<span color='#a8a8a8'>{}</span>",
+                "today": "<span background='#b01949' color='#f0ebd8'><b>{}</b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    }
+}

@@ -1,4 +1,4 @@
-@theme "hybrid.rasi"
+@theme "theme.rasi"
 
 configuration {
     show-icons:          true;
@@ -9,8 +9,6 @@ configuration {
 window {
     width:            350px;
     background-color: @background;
-    border-radius:    16px;
-    border-color:     @border-colour;
     border:           2px;
     location:         north;
     anchor:           north;
@@ -33,7 +31,6 @@ textbox-status {
     padding: 0px 8px 0px 8px;
     background-color: transparent;
     border: 1px;
-    border-radius: 8px;
     expand:           false;
     horizontal-align: 1;
     vertical-align:   0.5;
@@ -44,13 +41,13 @@ inputbar {
     spacing:          0px;
     padding:          14px 20px;
     background-color: @background;
-    border:           0px 0px 1px 0px;
+    // border:           0px 0px 1px 0px;
     border-color:     @divider;
     children:         [ textbox-prompt, entry, textbox-status ];
 }
 
 textbox-prompt {
-    content:          " ";
+    content:          "  ";
     font:             "FiraCode Nerd Font 13";
     text-color:       @accent;
     background-color: transparent;
@@ -76,16 +73,15 @@ listview {
     padding:          12px;
     background-color: transparent;
     scrollbar:        false;
-    lines:            4;
+    lines:            7;
     fixed-height:     false;
     columns:          1;
 }
 
 element {
-    padding:          15px;
+    padding:          10px;
     spacing:          0px;
     border:           0px;
-    border-radius:    15px;
     background-color: transparent;
     text-color:       @muted;
     cursor:           pointer;
@@ -102,7 +98,7 @@ element-text {
     text-color:       inherit;
     highlight:        @accent;
     cursor:           inherit;
-    font:             "FiraCode Nerd Font 12";
+    font:             "FiraCode Nerd Font 13";
 }
 
 element.selected.normal {

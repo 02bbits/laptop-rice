@@ -1,4 +1,4 @@
-@theme "hybrid.rasi"
+@theme "theme.rasi"
 
 configuration {
     show-icons:          true;
@@ -9,8 +9,6 @@ configuration {
 
 window {
     width:            1600px;
-    background-color: @background;
-    border-radius:    16px;
     border-color:     @divider;
     border:           1px;
     location:         center;

@@ -1,0 +1,19 @@
+/* Ink — mirrors colors.toml at the repo root. */
+
+/* Surfaces */
+@define-color base         #020305;
+@define-color surface      #0e0e0e;
+@define-color hover        #1b1b1b;
+
+/* Lines */
+@define-color border       #2a2a2a;
+@define-color divider      #1f1f1f;
+
+/* Text */
+@define-color text         #f0ebd8;
+@define-color muted        #a8a8a8;
+@define-color dim          #6a6a6a;
+
+/* Accent — focused workspace + critical battery only */
+@define-color accent       #b01949;
+@define-color accent_hover #c9265a;

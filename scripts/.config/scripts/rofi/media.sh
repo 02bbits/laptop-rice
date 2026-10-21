@@ -7,7 +7,7 @@ track=$(playerctl metadata --format '{{artist}} - {{title}}' 2>/dev/null)
 option=$(echo -e "󰐎  Play/Pause\n󰒭  Next\n󰒮  Previous" | rofi \
     -dmenu \
     -mesg "$track" \
-    -config "$HOME/.config/rofi/minimal_menu.rasi")
+    -config "$HOME/.config/rofi/minimal-menu.rasi")
 
 case "$option" in
 *Play*) playerctl play-pause ;;

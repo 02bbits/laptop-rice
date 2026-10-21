@@ -1,10 +1,18 @@
 #!/bin/bash
 # Open set of apps
 
-CONFIG="$HOME/.config/rofi/minimal_menu.rasi"
-sets="󰇄  Productivity \n󰅱  Develop \n󰊗  Gaming \n  Security Lab"
+CONFIG="$HOME/.config/rofi/minimal-menu-icons.rasi"
+# icon|name — the icon is any Nerd Font glyph, shown on a tile (glyph-icon.sh)
+sets="󰇄|Productivity
+󰅱|Develop
+󰊗|Gaming
+|Security Lab"
 
-option="$(echo -e "$sets" | rofi \
+source "$(dirname "$0")/glyph-icon.sh"
+
+option="$(while IFS='|' read -r icon name; do
+    printf '%s\0icon\x1f%s\n' "$name" "$(glyph_icon "$icon")"
+done <<<"$sets" | rofi \
     -dmenu \
     -config $CONFIG)"
 

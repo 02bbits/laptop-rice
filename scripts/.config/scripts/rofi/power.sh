@@ -3,7 +3,7 @@
 
 option=$(echo -e "  Lock\n󰤄  Suspend\n󰍃  Logout\n  Reboot\n⏻  Shutdown" | rofi \
     -dmenu \
-    -config "$HOME/.config/rofi/minimal_menu.rasi")
+    -config "$HOME/.config/rofi/minimal-menu.rasi")
 
 case "$option" in
 *Lock*) swaylock -f ;;

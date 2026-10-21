@@ -114,9 +114,9 @@ ocrarea() {
     fi
 
     # run OCR straight off the temp image, output to stdout
-    # ocr_fix.py swaps misread chars by dictionary context (system.1og -> system.log)
+    # ocr-fix.py swaps misread chars by dictionary context (system.1og -> system.log)
     text=$(tesseract "$tmpfile" - -l "$ocr_lang" 2>/dev/null |
-        python3 "$(dirname "$0")/ocr_fix.py" | sed -e 's/[[:space:]]*$//')
+        python3 "$(dirname "$0")/ocr-fix.py" | sed -e 's/[[:space:]]*$//')
 
     if [[ -z "$text" ]]; then
         notify_result "empty"

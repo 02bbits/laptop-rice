@@ -1,5 +1,5 @@
 /* Ink — shared base for every rofi menu. Mirrors colors.toml.
-   Child themes import this with @theme "hybrid.rasi" and should
+   Child themes import this with @theme "theme.rasi" and should
    reference these names, not raw hex. */
 
 * {
@@ -76,3 +76,12 @@ case-indicator {
 }
 
 textbox-num-sep { str: "/"; }
+
+window {
+    background-color: @background;
+    border-radius:    0px;
+}
+
+element {
+    border-radius:    0px;
+}

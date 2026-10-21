@@ -101,12 +101,13 @@ fi
 
 read -rp "Category [d/i/n/l]: " category
 
+# Used to be using emoji, changed to using words
 case "$category" in
-d) emoji="✅ " ;;
-i) emoji="💡 " ;;
-n) emoji="📝 " ;;
-l) emoji="📚 " ;;
+d) emoji="done: " ;;
+i) emoji="idea: " ;;
+n) emoji="todo: " ;;
+l) emoji="learnt: " ;;
 *) emoji="" ;;
 esac
 
-printf '# %s\n%s %s\n\n' "$(date +'%H:%M')" "$emoji""$*" >>"$note_file"
+printf '\n%s %s' - "$emoji""$*" >>"$note_file"

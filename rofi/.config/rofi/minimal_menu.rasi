@@ -1,4 +1,6 @@
-@theme "hybrid.rasi"
+/* Minimal menu — Ink, no input. Same look as command-palette.rasi: rows and key hints.
+   Typing still filters (invisibly). -mesg shows a dim line above the rows. */
+@theme "theme.rasi"
 
 configuration {
     sort: true;
@@ -11,95 +13,120 @@ configuration {
 }
 
 window {
-    width:            350px;
-    // height:           350px;
-    background-color: @background;
-    border-radius:    16px;
-    border-color:     @border-colour;
-    border:           2px;
+    width:            440px;
     location:         north;
     anchor:           north;
-    y-offset:         0px;
+    y-offset:         8px;
+    border:           1px;
+    border-color:     @border-colour;
+    border-radius:    16px;
+    background-color: @background;
 }
 
-mainbox {
-    padding:          16px 0px;
-    spacing:          0px;
+/*****----- Message (shown only when a script passes -mesg) -----*****/
+message {
+    expand:           false;
+    padding:          14px 22px 2px 22px;
     background-color: transparent;
-    children: [listview];
 }
 
-
-entry {
-    enabled: false;
+textbox {
+    font:             "FiraCode Nerd Font 10";
+    text-color:       @dim;
+    background-color: transparent;
 }
 
-/*****----- Input -----*****/
-prompt {
-    enabled:          false;
-}
-
-case-indicator {
-    enabled:          false;
-}
-
-inputbar {
-  enabled: false;
-}
-/*****----- List -----*****/
+/*****----- Rows -----*****/
 listview {
-    spacing:          0px;
-    padding:          12px 16px 0px 16px;
-    background-color: transparent;
-    scrollbar:        false;
+    lines:            7;
     fixed-height:     false;
-    no-fixed-num-lines: false;
+    scrollbar:        false;
+    padding:          10px 10px 10px 10px;
+    spacing:          2px;
+    background-color: transparent;
 }
 
 element {
-    padding:          9px 0px 8px 15px;
-    spacing:          0px;
-    border:           0px;
-    border-radius:    8px;
+    padding:          10px 14px;
+    spacing:          12px;
+    border-radius:    10px;
     background-color: transparent;
     text-color:       @muted;
     cursor:           pointer;
 }
 
+element selected.normal {
+    background-color: @hover;
+    text-color:       @foreground;
+}
+
+element.normal.active   { text-color: @dim; }
+element selected.active { background-color: @hover; text-color: @accent; }
+
 element-icon {
     enabled:          false;
-    size:             20ch;
+    size:             1.2em;
+    background-color: transparent;
 }
 
 element-text {
+    font:             "FiraCode Nerd Font 12";
     background-color: transparent;
     text-color:       inherit;
     highlight:        @accent;
+    vertical-align:   0.5;
     cursor:           inherit;
-    font:             "FiraCode Nerd Font 13";
 }
 
-element.selected.normal {
-    background-color: @hover;
-    text-color:       @foreground;
-    highlight:        @foreground;
+/*****----- Key hints -----*****/
+box-footer {
+    expand:           false;
+    orientation:      horizontal;
+    padding:          10px 16px;
+    spacing:          8px;
+    background-color: transparent;
+    border:           1px 0px 0px 0px;
+    border-color:     @divider;
+    children:         [ textbox-k1, textbox-l1, textbox-k2, textbox-l2, textbox-gap, textbox-k4 ];
 }
 
-element.normal.active {
+textbox-k1, textbox-k2, textbox-k4 {
+    font:             "FiraCode Nerd Font 9";
+    text-color:       @muted;
+    background-color: @surface;
+    border-radius:    6px;
+    padding:          3px 7px;
+    expand:           false;
+    vertical-align:   0.5;
+}
+
+textbox-l1, textbox-l2 {
+    font:             "FiraCode Nerd Font 9";
     text-color:       @dim;
-    highlight:        @dim;
+    background-color: transparent;
+    expand:           false;
+    vertical-align:   0.5;
+    margin:           0px 6px 0px 0px;
 }
 
-element.selected.active {
-    background-color: @hover;
-    text-color:       @accent;
-    highlight:        @accent;
+textbox-k1  { content: "↑↓"; }
+textbox-l1  { content: "move"; }
+textbox-k2  { content: "↵"; }
+textbox-l2  { content: "select"; }
+textbox-gap { content: ""; expand: true; background-color: transparent; }
+textbox-k4  { content: "esc"; }
+
+/*****----- No extras -----*****/
+prompt         { enabled: false; }
+case-indicator { enabled: false; }
+mode-switcher  { enabled: false; }
+
+mainbox {
+    padding:          0px;
+    spacing:          0px;
+    background-color: transparent;
+    children:         [ message, listview, box-footer ];
 }
 
-mode-switcher {
-    enabled:          false;
-}
-
-message {
-    enabled:          false;
-}
+inputbar { enabled: false; }
+entry    { enabled: false; }

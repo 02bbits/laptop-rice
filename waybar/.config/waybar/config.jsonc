@@ -1,32 +1,51 @@
 {
     "include": "~/.config/waybar/modules.jsonc",
     "reload_style_on_change": true,
-
     // Horizontal bar. Vertical variant lives in vertical-bar.jsonc.
     "width": 1000,
     "height": 45,
     "spacing": 10,
     "margin-top": 8,
     "margin-bottom": 7,
-
     // identity, then machine telemetry
     "modules-left": [
-        "custom/username",
-        "group/system-info"      // custom/seperator-right, cpu, memory, disk
+        "group/player", // custom/username, mpris
+        "custom/seperator-right"
     ],
-
     // workspaces alone, so the centre stays the centre
     "modules-center": [
         // "group/info",
+        "group/system-info", // custom/seperator-right, cpu, memory, disk
         "niri/workspaces#word",
         "group/utils"
     ],
-
     // ambient -> connectivity -> power -> alerts -> time
     "modules-right": [
-        "group/system",          // custom/seperator-left, network, pulseaudio, power-profiles-daemon
+        "group/system", // custom/seperator-left, network, pulseaudio, power-profiles-daemon
         "battery",
         "custom/notifications",
         "clock"
-    ]
+    ],
+    // hover the username to slide the music player out to its right
+    "group/player": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "transition-left-to-right": true
+        },
+        "modules": [
+            "custom/username",
+            "mpris"
+        ]
+    },
+    // same music controller as the ink bar
+    "mpris": {
+        "format": "{status_icon}  {title}",
+        "status-icons": {
+            "playing": "󰐊",
+            "paused": "󰏤"
+        },
+        "title-len": 28,
+        "tooltip-format": "{player}: {artist} — {title}"
+    }
 }

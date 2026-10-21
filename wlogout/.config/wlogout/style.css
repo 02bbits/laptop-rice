@@ -15,7 +15,7 @@ button {
 	/* background-color: rgba(2, 3, 5, 0.35); */
 	background-color: transparent;
 	color: #f0ebd8;
-	border-radius: 16px;
+	border-radius: 0px;
     text-decoration-color: #f0ebd8;
     background-repeat: no-repeat;
     background-position: center;
@@ -30,9 +30,7 @@ button:focus,
 button:active,
 button:hover {
 	background-color: rgba(27,27,27,0.9);
-    border: 2px solid #ffffff;
-    margin-top: 5rem;
-    margin-bottom: 5rem;
+    border: 2px solid #f0ebd8;
 }
 
 #lock {

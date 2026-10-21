@@ -1,7 +1,7 @@
 /* ─────────────── CORE ─────────────────────────────────────────────────────── */
 {
     "custom/username": {
-        "format": "> {0}.",
+        "format": "{0}.",
         "exec": "whoami",
         "on-click": "sh $HOME/.config/scripts/niri/launch_drun.sh",
         "tooltip": false,
@@ -98,7 +98,6 @@
             "10": "<span font='12'>零</span>",
         },
     },
-
     "niri/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
@@ -117,7 +116,6 @@
             "10": "<span font='12'>零</span>",
         },
     },
-
     "niri/workspaces#word": {
         "disable-scroll": true,
         "all-outputs": false,
@@ -134,7 +132,6 @@
             "8": "Ei",
             "9": "Ni",
             "10": "Te",
-
         },
     },
     "clock": {
@@ -144,9 +141,9 @@
         "calendar": {
             "mode": "month",
             "on-scroll": 1,
-            "mode"          : "year",
-            "mode-mon-col"  : 3,
-            "on-scroll"     : 1,
+            "mode": "year",
+            "mode-mon-col": 3,
+            "on-scroll": 1,
             "on-click-right": "mode",
             "format": {
                 "months": "<span font='9' color='#f0ebd8'><b>{}</b></span>",
@@ -169,16 +166,24 @@
             "transition-duration": 300,
             "transition-left-to-right": false,
         },
-        "modules": ["custom/arrow-left", "custom/playerlabel", "custom/updates"],
+        "modules": [
+            "custom/arrow-left",
+            "custom/playerlabel",
+            "custom/updates"
+        ],
     },
     "group/system-info": {
         "orientation": "inherit",
-        "click-to-reveal": true,
         "drawer": {
             "transition-duration": 300,
-            "transition-left-to-right": true,
+            "transition-left-to-right": true, // items open right of "<", pushing it left
         },
-        "modules": ["custom/seperator-right", "cpu", "memory", "disk"],
+        "modules": [
+            "custom/arrow-left", // leader: hover "<" to expand
+            "cpu",
+            "memory",
+            "disk",
+        ],
     },
     "group/video": {
         "orientation": "inherit",
@@ -197,21 +202,32 @@
         "orientation": "inherit",
         "drawer": {
             "transition-duration": 300,
-            "transition-left-to-right": false,
+            "transition-left-to-right": true, // items open right of the "|", pushing it left
         },
-        "modules": ["custom/seperator-left", "group/control-center"],
+        "modules": [
+            "custom/seperator-left",
+            "group/control-center"
+        ],
     },
     "group/control-center": {
         "orientation": "inherit",
-        "modules": ["network", "group/audio", "power-profiles-daemon"],
+        "modules": [
+            "network",
+            "group/audio",
+            "power-profiles-daemon"
+        ],
     },
     "group/audio": {
         "orientation": "inherit",
-        "modules": ["pulseaudio"], // "pulseaudio/slider"
+        "modules": [
+            "pulseaudio"
+        ], // "pulseaudio/slider"
     },
     "group/connection": {
         "orientation": "inherit",
-        "modules": ["group/network"],
+        "modules": [
+            "group/network"
+        ],
     },
     "group/network": {
         "orientation": "inherit",
@@ -219,7 +235,9 @@
             "transition-duration": 10000,
             "transition-left-to-right": true,
         },
-        "modules": ["network"],
+        "modules": [
+            "network"
+        ],
     },
     "group/bluetooth": {
         "orientation": "inherit",
@@ -227,7 +245,10 @@
             "transition-duration": 300,
             "transition-left-to-right": true,
         },
-        "modules": ["bluetooth", "bluetooth#status"],
+        "modules": [
+            "bluetooth",
+            "bluetooth#status"
+        ],
     },
     "group/utils": {
         "orientation": "inherit",
@@ -235,7 +256,11 @@
             "transition-duration": 300,
             "transition-left-to-right": false,
         },
-        "modules": ["custom/arrow-right", "tray", "custom/weather"],
+        "modules": [
+            "custom/arrow-right",
+            "tray",
+            "custom/weather"
+        ],
     },
     "group/power": {
         "orientation": "inherit",
@@ -243,7 +268,10 @@
             "transition-duration": 300,
             "transition-left-to-right": false,
         },
-        "modules": ["battery", "power-profiles-daemon"],
+        "modules": [
+            "battery",
+            "power-profiles-daemon"
+        ],
     },
     /* ─────────────── MÓDULOS DE SISTEMA ─────────────────────────────────────── */
     "cpu": {
@@ -275,8 +303,14 @@
         },
         "format": "<span font='12'>{icon}</span>   {capacity}",
         "format-charging": "<span font='12'>{icon}</span>󱐋 {capacity}",
-        "format-full": "<span font='12'>{icon}</span> full",
-        "format-icons": ["", "", "", "", ""],
+        "format-full": "<span font='12'>{icon}</span>   full",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
         "tooltip-format": "{timeTo} {capacity} % | {power} W",
         "full-at": 80
     },
@@ -292,7 +326,9 @@
             "phone": " ",
             "portable": " ",
             "car": " ",
-            "default": ["󰕾 "],
+            "default": [
+                "󰕾 "
+            ],
         },
         "on-click": "bash $HOME/.config/scripts/waybar/toggle_sound.sh",
         "on-click-middle": "pavucontrol",
@@ -310,32 +346,22 @@
         "tooltip-format": "󰍬 {source_desc} | {source_volume}%",
         "scroll-step": 5,
     },
-    "cava": {
-        "framerate": 60,
-        "autosens": 1,
-        "bars": 14,
-        "lower_cutoff_freq": 50,
-        "higher_cutoff_freq": 10000,
-        "method": "pulse",
-        "source": "auto",
-        "stereo": true,
-        "reverse": false,
-        "bar_delimiter": 0,
-        "monstercat": false,
-        "waves": false,
-        "noise_reduction": 0.77,
-        "input_delay": 2,
-        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
-        "actions": {
-            "on-click-right": "mode",
-        },
-    },
     "network": {
         "format": "{icon}",
         "format-icons": {
-            "wifi": [ "󰤯", "󰤟", "󰤢", "󰤥", "󰤨" ],
-            "ethernet": ["󰈁 "],
-            "disconnected": [" "],
+            "wifi": [
+                "󰤯",
+                "󰤟",
+                "󰤢",
+                "󰤥",
+                "󰤨"
+            ],
+            "ethernet": [
+                "󰈁 "
+            ],
+            "disconnected": [
+                " "
+            ],
         },
         "format-wifi": "<span font='12'>{icon}</span>   {signalStrength}",
         "format-ethernet": "󰈁 ",
@@ -375,7 +401,7 @@
     //"custom/arrow-left":  { "format": "󰁒", "tooltip": false },
     //"custom/arrow-right": { "format": "󰁙", "tooltip": false },
     "custom/arrow-left": {
-        "format": "<",
+        "format": "&lt;", // Pango markup: a bare "<" fails to render
         "tooltip": false,
     },
     "custom/arrow-right": {
@@ -465,7 +491,11 @@
         "tooltip-format": "{title}",
         "on-click": "activate",
         "on-click-middle": "close",
-        "ignore-list": ["wofi", "rofi", "swaylock"],
+        "ignore-list": [
+            "wofi",
+            "rofi",
+            "swaylock"
+        ],
     },
     "power-profiles-daemon": {
         "format": "{icon}",

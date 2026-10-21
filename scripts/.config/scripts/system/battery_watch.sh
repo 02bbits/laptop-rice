@@ -27,8 +27,6 @@ while true; do
             touch "$NOTIFY_50"
         fi
         # brightnessctl -q set 100%
-    else
-        # brightnessctl -q set 100%
     fi
 
     sleep "$INTERVAL"

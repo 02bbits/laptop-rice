@@ -1,0 +1,185 @@
+/* Command palette — Ink. Layout: search bar, section header, icon rows, key hints. */
+@theme "theme.rasi"
+
+configuration {
+    show-icons:       true;
+    font:             "FiraCode Nerd Font 12";
+}
+
+window {
+    width:            440px;
+    location:         north;
+    anchor:           north;
+    y-offset:         8px;
+    border:           1px;
+    border-color:     @border-colour;
+    border-radius:    16px;
+    background-color: @background;
+}
+
+mainbox {
+    padding:          0px;
+    spacing:          0px;
+    background-color: transparent;
+    children:         [ inputbar, box-header, listview, box-footer ];
+}
+
+/*****----- Search -----*****/
+inputbar {
+    expand:           false;
+    padding:          16px 18px;
+    spacing:          12px;
+    background-color: transparent;
+    border:           0px 0px 1px 0px;
+    border-color:     @divider;
+    children:         [ textbox-prompt, entry, textbox-esc ];
+}
+
+textbox-prompt {
+    content:          "✦";
+    font:             "FiraCode Nerd Font 14";
+    text-color:       @accent;
+    background-color: transparent;
+    expand:           false;
+    vertical-align:   0.5;
+}
+
+entry {
+    placeholder:      "type a command…";
+    placeholder-color: @dim;
+    text-color:       @foreground;
+    background-color: transparent;
+    vertical-align:   0.5;
+    cursor:           text;
+}
+
+textbox-esc {
+    content:          "command";
+    font:             "FiraCode Nerd Font 9";
+    text-color:       @muted;
+    background-color: transparent;
+    border:           1px;
+    border-color:     @border-colour;
+    border-radius:    7px;
+    padding:          4px 8px;
+    expand:           false;
+    vertical-align:   0.5;
+}
+
+/*****----- Section header -----*****/
+box-header {
+    expand:           false;
+    orientation:      horizontal;
+    padding:          14px 22px 6px 22px;
+    background-color: transparent;
+    children:         [ textbox-header, num-filtered-rows ];
+}
+
+textbox-header {
+    content:          "COMMANDS";
+    font:             "FiraCode Nerd Font 9";
+    text-color:       @dim;
+    background-color: transparent;
+}
+
+num-filtered-rows {
+    font:             "FiraCode Nerd Font 9";
+    text-color:       @dim;
+    background-color: transparent;
+    expand:           false;
+}
+
+/*****----- Rows -----*****/
+listview {
+    lines:            7;
+    fixed-height:     false;
+    scrollbar:        false;
+    padding:          4px 10px 10px 10px;
+    spacing:          2px;
+    background-color: transparent;
+}
+
+element {
+    orientation:      horizontal;
+    padding:          7px 12px;
+    spacing:          14px;
+    border-radius:    10px;
+    background-color: transparent;
+    text-color:       @muted;
+    cursor:           pointer;
+    children:         [ element-icon, element-text ];
+}
+
+element selected.normal {
+    background-color: @hover;
+    text-color:       @foreground;
+}
+
+element-icon {
+    size:             18px;
+    padding:          8px;
+    border-radius:    8px;
+    background-color: @surface;
+    border:           1px;
+    border-color:     transparent;
+}
+
+element-icon selected {
+    border-color:     @accent;
+    background-color: @accent;
+}
+
+element-text {
+    font:             "FiraCode Nerd Font 12";
+    background-color: transparent;
+    text-color:       inherit;
+    highlight:        @accent;
+    vertical-align:   0.5;
+    tab-stops:        [ 296px ];
+}
+
+/*****----- Key hints -----*****/
+box-footer {
+    expand:           false;
+    orientation:      horizontal;
+    padding:          10px 16px;
+    spacing:          8px;
+    background-color: transparent;
+    border:           1px 0px 0px 0px;
+    border-color:     @divider;
+    children:         [ textbox-k1, textbox-l1, textbox-k2, textbox-l2, textbox-k3, textbox-l3, textbox-gap, textbox-k4 ];
+}
+
+textbox-k1, textbox-k2, textbox-k3, textbox-k4 {
+    font:             "FiraCode Nerd Font 9";
+    text-color:       @muted;
+    background-color: @surface;
+    border-radius:    6px;
+    padding:          3px 7px;
+    expand:           false;
+    vertical-align:   0.5;
+}
+
+textbox-l1, textbox-l2, textbox-l3 {
+    font:             "FiraCode Nerd Font 9";
+    text-color:       @dim;
+    background-color: transparent;
+    expand:           false;
+    vertical-align:   0.5;
+    margin:           0px 6px 0px 0px;
+}
+
+textbox-k1 { content: "↑↓"; }
+textbox-l1 { content: "move"; }
+textbox-k2 { content: "↵"; }
+textbox-l2 { content: "open"; }
+textbox-k3 { content: "01–20"; }
+textbox-l3 { content: "jump"; }
+textbox-gap { content: ""; expand: true; background-color: transparent; }
+textbox-k4 { content: "esc"; }
+
+/*****----- No extras -----*****/
+prompt        { enabled: false; }
+case-indicator { enabled: false; }
+mode-switcher { enabled: false; }
+message       { enabled: false; }

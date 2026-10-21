@@ -303,7 +303,7 @@ show_menu() {
 }
 
 # Rofi command to pipe into, can add any options here
-rofi_command="rofi -show drun -sorting-method fzf -sort -config $HOME/.config/rofi/minimal_menu.rasi -dmenu $* -p"
+rofi_command="rofi -show drun -sorting-method fzf -sort -config $HOME/.config/rofi/minimal-menu.rasi -dmenu $* -p"
 
 case "$1" in
 --status)

@@ -99,3 +99,5 @@ source <(fzf --zsh)
 . "$HOME/.local/bin/env"
 
 setopt HIST_IGNORE_SPACE
+export PATH="/home/bdora/.config/herd-lite/bin:$PATH"
+export PHP_INI_SCAN_DIR="/home/bdora/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"

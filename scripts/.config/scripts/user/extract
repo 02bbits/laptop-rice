@@ -1,0 +1,4 @@
+#!/bin/bash
+# Unpack archives next to themselves. unar handles zip/rar/7z/tar/iso and only makes a folder when needed.
+
+for f; do unar -q -o "$(dirname "$f")" "$f"; done
